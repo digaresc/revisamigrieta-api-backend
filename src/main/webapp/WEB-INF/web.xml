@@ -24,6 +24,13 @@
             <param-value>com.revisamigrieta.backend.GrietaEndpoint,com.revisamigrieta.backend.RevisionEndpoint</param-value>
         </init-param>
     </servlet>
+
+    <!-- File Uploader -->
+    <servlet>
+        <servlet-name>GrietaImageUploadEndpoint</servlet-name>
+        <servlet-class>com.revisamigrieta.backend.GrietaImageUploadEndpoint</servlet-class>
+    </servlet>
+
     <!-- Route API method requests to the backend. -->
     <servlet-mapping>
         <servlet-name>EndpointsServlet</servlet-name>
@@ -32,6 +39,14 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+
+
+    <servlet-mapping>
+        <servlet-name>GrietaImageUploadEndpoint</servlet-name>
+        <url-pattern>/_ah/api/upload</url-pattern>
+        <url-pattern>/_ah/api/upload/</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>endpoints-api-configuration</filter-name>
@@ -73,6 +88,7 @@
     <listener>
         <listener-class>com.revisamigrieta.backend.models.dao.OfyHelper</listener-class>
     </listener>
+
     <!--<filter-mapping>
         <filter-name>endpoints-api-configuration</filter-name>
         <servlet-name>EndpointsServlet</servlet-name>

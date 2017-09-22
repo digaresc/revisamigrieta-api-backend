@@ -10,6 +10,7 @@ import com.google.api.server.spi.response.UnauthorizedException;
 import com.googlecode.objectify.Key;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -37,7 +38,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 )
 // [END grieta_api_annotation]
 public class RevisionEndpoint {
-
+	private static final Logger logger = Logger.getLogger(RevisionEndpoint.class.getName());
 	// [START publish_method]
 	@ApiMethod(name = "publishReview", path = "/grieta/{id}/revision",
 			httpMethod = ApiMethod.HttpMethod.POST,
@@ -79,7 +80,7 @@ public class RevisionEndpoint {
 		Key grietaModelKey = Key.create(GrietaModel.class, grietaId);
 
 		List<RevisionModel> revisionModels = ofy().load().type(RevisionModel.class).filter("grietaModelRef", grietaModelKey).list();
-		System.out.println(revisionModels.toString());
+		logger.info(revisionModels.toString());
 		return revisionModels;
 	}
 	// [END retrieveAllGrietas_method]
@@ -90,7 +91,7 @@ public class RevisionEndpoint {
 		Long revisionId = Long.parseLong(id);
 		RevisionDao revisionDao = new RevisionDao();
 		RevisionModel revisionModel = revisionDao.get(revisionId);
-		System.out.println(revisionModel.toString());
+		logger.info(revisionModel.toString());
 		return revisionModel;
 	}
 	// [END retrieveGrieta_method]

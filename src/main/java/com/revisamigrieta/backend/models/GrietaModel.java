@@ -5,6 +5,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
@@ -39,6 +40,9 @@ public class GrietaModel {
 	private boolean paralelaAlPiso;
 	@Index
 	private boolean loza;
+
+	@Index
+	private ArrayList<String> files;
 
 	@Index
 	private GeoPt geoPt;
@@ -195,28 +199,11 @@ public class GrietaModel {
 		this.geoPt = geoPt;
 	}
 
-	@Override
-	public String toString() {
-		return "GrietaModel{" +
-				"id=" + id +
-				", pared=" + pared +
-				", externa=" + externa +
-				", interna=" + interna +
-				", critica=" + critica +
-				", hundimientos=" + hundimientos +
-				", desplomes=" + desplomes +
-				", golpeteo=" + golpeteo +
-				", desprendimiento=" + desprendimiento +
-				", vibraciones=" + vibraciones +
-				", pisosHuecos=" + pisosHuecos +
-				", diagonalConHorizontalDePiso=" + diagonalConHorizontalDePiso +
-				", paralelaAlPiso=" + paralelaAlPiso +
-				", loza=" + loza +
-				", geoPt=" + geoPt +
-				", diagonalEnLozaDeEsquinaACentro=" + diagonalEnLozaDeEsquinaACentro +
-				", createdOn=" + createdOn +
-				", message='" + message + '\'' +
-				", reportadaPor='" + reportadaPor + '\'' +
-				'}';
+	public ArrayList<String> getFiles() {
+		return files;
+	}
+
+	public void setFiles(ArrayList<String> files) {
+		this.files = files;
 	}
 }
