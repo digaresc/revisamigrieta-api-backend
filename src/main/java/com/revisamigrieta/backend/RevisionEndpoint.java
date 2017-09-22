@@ -69,6 +69,10 @@ public class RevisionEndpoint {
 		revisionModel.setPiso(piso);
 		revisionModel.setRevisadaPor(user.getId());
 
+		if(!revisionModel.getGrietaModelRef().isRevisada()){
+			revisionModel.getGrietaModelRef().setRevisada(true);
+		}
+
 		ofy().save().entity(revisionModel).now();
 	}
 	// [END publish_method]

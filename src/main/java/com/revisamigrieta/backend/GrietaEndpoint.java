@@ -1,6 +1,7 @@
 package com.revisamigrieta.backend;
 
 import com.google.api.server.spi.response.NotFoundException;
+import com.google.appengine.api.datastore.Query;
 import com.revisamigrieta.backend.models.GrietaModel;
 import com.revisamigrieta.backend.models.dao.GrietaDao;
 import com.google.api.server.spi.auth.EspAuthenticator;
@@ -9,6 +10,7 @@ import com.google.api.server.spi.config.*;
 import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.appengine.api.datastore.GeoPt;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -112,6 +114,23 @@ public class GrietaEndpoint {
 	}
 	// [END retrieveAllGrietas_method]
 
+	// [START retrieveAllGrietas_method]
+	@ApiMethod(name = "retrieveAllPendingGrietas", path = "/grietas/pending", httpMethod = ApiMethod.HttpMethod.GET)
+	public List<GrietaModel> retrieveAllPendingGrietas() {
+
+		GrietaDao grietaDao = new GrietaDao();
+		Query.Filter pendingFilter =
+				new Query.FilterPredicate("revisada", Query.FilterOperator.EQUAL, false);
+
+		ArrayList<Query.Filter> filters = new ArrayList<>();
+		filters.add(pendingFilter);
+
+		List<GrietaModel> grietaModelList = grietaDao.getWithFilters(filters);
+		logger.info(grietaModelList.toString());
+		return grietaModelList;
+
+	}
+	// [END retrieveAllGrietas_method]
 
 	// [START retrieveGrieta_method]
 	@ApiMethod(name = "retrieveGrietas", path = "/grietas/{id}", httpMethod = ApiMethod.HttpMethod.GET)
