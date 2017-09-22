@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static com.revisamigrieta.backend.helpers.Constants.API_VERSION;
+
 /**
  * The GrietaEndpoint API which Endpoints will be exposing.
  */
@@ -39,10 +41,11 @@ import java.util.logging.Logger;
 // [END grieta_api_annotation]
 public class GrietaEndpoint {
 	private static final Logger logger = Logger.getLogger(GrietaEndpoint.class.getName());
+
 	// [START publish_method]
 	@ApiMethod(
 			name = "publish",
-			path = "/grietas",
+			path = API_VERSION + "/grietas",
 			httpMethod = ApiMethod.HttpMethod.POST,
 			authenticators = {EspAuthenticator.class},
 			issuerAudiences = {@ApiIssuerAudience(name = "firebase",
@@ -103,7 +106,7 @@ public class GrietaEndpoint {
 	// [END publish_method]
 
 	// [START retrieveAllGrietas_method]
-	@ApiMethod(name = "retrieveAllGrietas", path = "/grietas", httpMethod = ApiMethod.HttpMethod.GET)
+	@ApiMethod(name = "retrieveAllGrietas", path = API_VERSION + "/grietas", httpMethod = ApiMethod.HttpMethod.GET)
 	public List<GrietaModel> retrieveAllGrietas() {
 
 		GrietaDao grietaDao = new GrietaDao();
@@ -115,7 +118,7 @@ public class GrietaEndpoint {
 	// [END retrieveAllGrietas_method]
 
 	// [START retrieveAllGrietas_method]
-	@ApiMethod(name = "retrieveAllPendingGrietas", path = "/grietas/pending", httpMethod = ApiMethod.HttpMethod.GET)
+	@ApiMethod(name = "retrieveAllPendingGrietas", path = API_VERSION + "/grietas/pending", httpMethod = ApiMethod.HttpMethod.GET)
 	public List<GrietaModel> retrieveAllPendingGrietas() {
 
 		GrietaDao grietaDao = new GrietaDao();
@@ -133,7 +136,7 @@ public class GrietaEndpoint {
 	// [END retrieveAllGrietas_method]
 
 	// [START retrieveGrieta_method]
-	@ApiMethod(name = "retrieveGrietas", path = "/grietas/{id}", httpMethod = ApiMethod.HttpMethod.GET)
+	@ApiMethod(name = "retrieveGrietas", path = API_VERSION + "/grietas/{id}", httpMethod = ApiMethod.HttpMethod.GET)
 	public GrietaModel retrieveGrietas(@Named("id") String id) {
 		Long grietaId = Long.parseLong(id);
 		GrietaDao grietaDao = new GrietaDao();

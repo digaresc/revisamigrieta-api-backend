@@ -27,10 +27,10 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import static com.revisamigrieta.backend.helpers.Constants.BUCKET_NAME;
+
 public class GrietaImageUploadEndpoint extends HttpServlet {
 	private static final Logger log = Logger.getLogger(GrietaImageUploadEndpoint.class.getName());
-
-	private final String BUCKET_NAME = "revisamigrieta-images";
 
 	// [START gcs]
 	private final GcsService gcsService = GcsServiceFactory.createGcsService(new RetryParams.Builder()

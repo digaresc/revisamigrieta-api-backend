@@ -43,8 +43,8 @@
 
     <servlet-mapping>
         <servlet-name>GrietaImageUploadEndpoint</servlet-name>
-        <url-pattern>/_ah/api/upload</url-pattern>
-        <url-pattern>/_ah/api/upload/</url-pattern>
+        <url-pattern>/_ah/api/v1/upload</url-pattern>
+        <url-pattern>/_ah/api/v1/upload/</url-pattern>
     </servlet-mapping>
 
 
