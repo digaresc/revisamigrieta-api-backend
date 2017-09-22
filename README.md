@@ -1,6 +1,6 @@
-##Revisa Mi Grieta API Backend
+## Revisa Mi Grieta API Backend
 
-###Stack
+### Stack
 - Google App Engine
 - Google Datastore
 - Google Storage 
@@ -8,7 +8,7 @@
 - Java 7
 - OpenApi
 
-###Instrucciónes
+### Instrucciónes
 
 Tomar de referencía [openapi.json](https://github.com/digaresc/revisamigrieta-api-backend/blob/master/openapi.json) para frontend o apps que consuman el api.
 
