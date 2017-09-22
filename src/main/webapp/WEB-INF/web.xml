@@ -21,7 +21,7 @@
         <servlet-class>com.google.api.server.spi.EndpointsServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>com.revisamigrieta.backend.Grieta,com.revisamigrieta.backend.Revision</param-value>
+            <param-value>com.revisamigrieta.backend.GrietaEndpoint,com.revisamigrieta.backend.RevisionEndpoint</param-value>
         </init-param>
     </servlet>
     <!-- Route API method requests to the backend. -->

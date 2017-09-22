@@ -27,7 +27,7 @@ import com.google.appengine.api.datastore.GeoPt;
 import java.util.List;
 
 /**
- * The Grieta API which Endpoints will be exposing.
+ * The GrietaEndpoint API which Endpoints will be exposing.
  */
 // [START grieta_api_annotation]
 @Api(
@@ -49,7 +49,7 @@ import java.util.List;
 		// [END_EXCLUDE]
 )
 // [END grieta_api_annotation]
-public class Grieta {
+public class GrietaEndpoint {
 
 	// [START publish_method]
 	@ApiMethod(

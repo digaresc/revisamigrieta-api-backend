@@ -31,7 +31,7 @@ import java.util.List;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 /**
- * The Revision API which Endpoints will be exposing.
+ * The RevisionEndpoint API which Endpoints will be exposing.
  */
 // [START grieta_api_annotation]
 @Api(
@@ -53,7 +53,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 		// [END_EXCLUDE]
 )
 // [END grieta_api_annotation]
-public class Revision {
+public class RevisionEndpoint {
 
 	// [START publish_method]
 	@ApiMethod(name = "publishReview", path = "/grieta/{id}/revision",
