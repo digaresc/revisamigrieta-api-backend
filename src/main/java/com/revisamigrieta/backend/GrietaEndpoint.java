@@ -1,5 +1,6 @@
 package com.revisamigrieta.backend;
 
+import com.google.api.server.spi.response.NotFoundException;
 import com.revisamigrieta.backend.models.GrietaModel;
 import com.revisamigrieta.backend.models.dao.GrietaDao;
 import com.google.api.server.spi.auth.EspAuthenticator;
@@ -9,6 +10,7 @@ import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.appengine.api.datastore.GeoPt;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * The GrietaEndpoint API which Endpoints will be exposing.
@@ -34,7 +36,7 @@ import java.util.List;
 )
 // [END grieta_api_annotation]
 public class GrietaEndpoint {
-
+	private static final Logger logger = Logger.getLogger(GrietaEndpoint.class.getName());
 	// [START publish_method]
 	@ApiMethod(
 			name = "publish",
@@ -61,12 +63,18 @@ public class GrietaEndpoint {
 	                    @Named("pisosHuecos") boolean pisosHuecos,
 	                    @Named("vibraciones") boolean vibraciones,
 	                    @Named("latitude") float latitude,
-	                    @Named("longitude") float longitude
-	) throws UnauthorizedException {
+	                    @Named("longitude") float longitude,
+	                    @Named("grietaId") Long grietaId
+	) throws UnauthorizedException, NotFoundException {
 		if (user == null) {
 			throw new UnauthorizedException("Invalid credentials");
 		}
-		GrietaModel grietaModel = new GrietaModel();
+		GrietaDao grietaDao = new GrietaDao();
+		GrietaModel grietaModel = grietaDao.get(grietaId);
+
+		if (grietaModel == null || grietaModel.getFiles().size() == 0 || grietaModel.getReportadaPor() != user.getId()) {
+			throw new NotFoundException("Una grieta require al menos una imagen");
+		}
 
 		grietaModel.setCritica(critica);
 		grietaModel.setDesplomes(desplomes);
@@ -86,7 +94,7 @@ public class GrietaEndpoint {
 		grietaModel.setVibraciones(vibraciones);
 		grietaModel.setGeoPt(new GeoPt(latitude, longitude));
 
-		GrietaDao grietaDao = new GrietaDao();
+
 		grietaDao.put(grietaModel);
 
 	}
@@ -98,7 +106,7 @@ public class GrietaEndpoint {
 
 		GrietaDao grietaDao = new GrietaDao();
 		List<GrietaModel> grietaModelList = grietaDao.getAll();
-		System.out.println(grietaModelList.toString());
+		logger.info(grietaModelList.toString());
 		return grietaModelList;
 
 	}
@@ -112,7 +120,7 @@ public class GrietaEndpoint {
 
 		GrietaModel grietaModel = grietaDao.get(grietaId);
 
-		System.out.println(grietaModel.toString());
+		logger.info(grietaModel.toString());
 		return grietaModel;
 	}
 	// [END retrieveGrieta_method]
