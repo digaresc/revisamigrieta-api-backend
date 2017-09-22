@@ -15,7 +15,7 @@ Tomar de referencia [openapi.json](https://github.com/digaresc/revisamigrieta-ap
 Documentación del API: [http://digaresc.info/revisamigrieta-api-backend/](http://digaresc.info/revisamigrieta-api-backend/)
 Endpoint de subida de archivos:
 
-HTTP URL: [https://files-dot-revisamigrieta.appspot.com/images/](https://files-dot-revisamigrieta.appspot.com/images/)
+HTTP URL: [https://revisamigrieta.appspot.com/_ah/api/upload](https://revisamigrieta.appspot.com/_ah/api/upload)
 HTTP Method: POST form-data multipart 
 
 ### Pasos para hacer submit de grietas:
@@ -32,7 +32,7 @@ Ejemplo de imagenes:
 CURL example:
 
 ``` curl -X POST \
-  https://files-dot-revisamigrieta.appspot.com/images/ \
+  https://revisamigrieta.appspot.com/_ah/api/upload \
   -H 'cache-control: no-cache' \
   -H 'content-type: multipart/form-data;' \
   -F file1=@Foto.jpeg \
