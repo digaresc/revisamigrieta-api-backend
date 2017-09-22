@@ -16,7 +16,7 @@
   "application/json"
  ],
  "paths": {
-  "/grietas": {
+  "/v1/grietas": {
    "get": {
     "operationId": "GrietaRetrieveAllGrietas",
     "parameters": [ ],
@@ -165,7 +165,7 @@
     ]
    }
   },
-  "/grietas/pending": {
+  "/v1/grietas/pending": {
    "get": {
     "operationId": "GrietaRetrieveAllPendingGrietas",
     "parameters": [ ],
@@ -179,7 +179,7 @@
     }
    }
   },
-  "/grietas/{grietaId}/revisiones": {
+  "/v1/grietas/{grietaId}/revisiones": {
    "get": {
     "operationId": "GrietaRetrieveAllGrietasReview",
     "parameters": [
@@ -200,7 +200,7 @@
     }
    }
   },
-  "/grietas/{grietaId}/revisiones/{revisionId}": {
+  "/v1/grietas/{grietaId}/revisiones/{revisionId}": {
    "get": {
     "operationId": "GrietaRetrieveGrietasReview",
     "parameters": [
@@ -227,7 +227,7 @@
     }
    }
   },
-  "/grietas/{id}": {
+  "/v1/grietas/{id}": {
    "get": {
     "operationId": "GrietaRetrieveGrietas",
     "parameters": [
@@ -248,7 +248,7 @@
     }
    }
   },
-  "/grietas/{id}/revisiones": {
+  "/v1/grietas/{id}/revisiones": {
    "post": {
     "operationId": "GrietaPublishReview",
     "parameters": [
