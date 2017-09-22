@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
+import static com.revisamigrieta.backend.helpers.Constants.API_VERSION;
 
 /**
  * The RevisionEndpoint API which Endpoints will be exposing.
@@ -40,7 +41,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 public class RevisionEndpoint {
 	private static final Logger logger = Logger.getLogger(RevisionEndpoint.class.getName());
 	// [START publish_method]
-	@ApiMethod(name = "publishReview", path = "/grietas/{id}/revisiones",
+	@ApiMethod(name = "publishReview", path = API_VERSION + "/grietas/{id}/revisiones",
 			httpMethod = ApiMethod.HttpMethod.POST,
 			authenticators = {EspAuthenticator.class},
 			issuerAudiences = {@ApiIssuerAudience(name = "firebase",
@@ -78,7 +79,7 @@ public class RevisionEndpoint {
 	// [END publish_method]
 
 	// [START retrieveAllGrietas_method]
-	@ApiMethod(name = "retrieveAllGrietasReview", path = "/grietas/{grietaId}/revisiones", httpMethod = ApiMethod.HttpMethod.GET)
+	@ApiMethod(name = "retrieveAllGrietasReview", path = API_VERSION + "/grietas/{grietaId}/revisiones", httpMethod = ApiMethod.HttpMethod.GET)
 	public List<RevisionModel> retrieveAllGrietasReview(@Named("grietaId") String grietaId) {
 
 		Key grietaModelKey = Key.create(GrietaModel.class, grietaId);
@@ -90,7 +91,7 @@ public class RevisionEndpoint {
 	// [END retrieveAllGrietas_method]
 
 	// [START retrieveGrieta_method]
-	@ApiMethod(name = "retrieveGrietasReview", path = "/grietas/{grietaId}/revisiones/{revisionId}", httpMethod = ApiMethod.HttpMethod.GET)
+	@ApiMethod(name = "retrieveGrietasReview", path = API_VERSION + "/grietas/{grietaId}/revisiones/{revisionId}", httpMethod = ApiMethod.HttpMethod.GET)
 	public RevisionModel retrieveGrietasReview(@Named("grietaId") String grietaId, @Named("revisionId") String id) {
 		Long revisionId = Long.parseLong(id);
 		RevisionDao revisionDao = new RevisionDao();
