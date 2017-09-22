@@ -40,7 +40,7 @@ public class GrietaEndpoint {
 	// [START publish_method]
 	@ApiMethod(
 			name = "publish",
-			path = "/grieta",
+			path = "/grietas",
 			httpMethod = ApiMethod.HttpMethod.POST,
 			authenticators = {EspAuthenticator.class},
 			issuerAudiences = {@ApiIssuerAudience(name = "firebase",
@@ -101,7 +101,7 @@ public class GrietaEndpoint {
 	// [END publish_method]
 
 	// [START retrieveAllGrietas_method]
-	@ApiMethod(name = "retrieveAllGrietas", path = "/grieta", httpMethod = ApiMethod.HttpMethod.GET)
+	@ApiMethod(name = "retrieveAllGrietas", path = "/grietas", httpMethod = ApiMethod.HttpMethod.GET)
 	public List<GrietaModel> retrieveAllGrietas() {
 
 		GrietaDao grietaDao = new GrietaDao();
@@ -112,8 +112,9 @@ public class GrietaEndpoint {
 	}
 	// [END retrieveAllGrietas_method]
 
+
 	// [START retrieveGrieta_method]
-	@ApiMethod(name = "retrieveGrietas", path = "/grieta/{id}", httpMethod = ApiMethod.HttpMethod.GET)
+	@ApiMethod(name = "retrieveGrietas", path = "/grietas/{id}", httpMethod = ApiMethod.HttpMethod.GET)
 	public GrietaModel retrieveGrietas(@Named("id") String id) {
 		Long grietaId = Long.parseLong(id);
 		GrietaDao grietaDao = new GrietaDao();

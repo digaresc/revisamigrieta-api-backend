@@ -16,7 +16,7 @@
   "application/json"
  ],
  "paths": {
-  "/grieta": {
+  "/grietas": {
    "get": {
     "operationId": "GrietaRetrieveAllGrietas",
     "parameters": [ ],
@@ -135,6 +135,13 @@
       "required": true,
       "type": "number",
       "format": "float"
+     },
+     {
+      "name": "grietaId",
+      "in": "query",
+      "required": true,
+      "type": "integer",
+      "format": "int64"
      }
     ],
     "responses": {
@@ -158,7 +165,7 @@
     ]
    }
   },
-  "/grieta/{grietaId}/revision": {
+  "/grietas/{grietaId}/revisiones": {
    "get": {
     "operationId": "GrietaRetrieveAllGrietasReview",
     "parameters": [
@@ -179,7 +186,7 @@
     }
    }
   },
-  "/grieta/{grietaId}/revision/{revisionId}": {
+  "/grietas/{grietaId}/revisiones/{revisionId}": {
    "get": {
     "operationId": "GrietaRetrieveGrietasReview",
     "parameters": [
@@ -206,7 +213,7 @@
     }
    }
   },
-  "/grieta/{id}": {
+  "/grietas/{id}": {
    "get": {
     "operationId": "GrietaRetrieveGrietas",
     "parameters": [
@@ -227,7 +234,7 @@
     }
    }
   },
-  "/grieta/{id}/revision": {
+  "/grietas/{id}/revisiones": {
    "post": {
     "operationId": "GrietaPublishReview",
     "parameters": [
@@ -331,6 +338,12 @@
     },
     "externa": {
      "type": "boolean"
+    },
+    "files": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
     },
     "geoPt": {
      "$ref": "#/definitions/GeoPt"
