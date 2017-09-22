@@ -38,10 +38,12 @@ CURL example:
   -F file1=@Foto.jpeg \
   -F file2=@IMG_2977.jpg \
   -F file3=@IMG_20170905_183133149.jpg 
-  ```
+```
   
 Response:
 
-``` {
+``` 
+{
     "grietaId": 5634472569470976
-} ```
+} 
+```
