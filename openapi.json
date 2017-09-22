@@ -1,0 +1,446 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "version": "1.0.0",
+  "title": "revisamigrieta.appspot.com"
+ },
+ "host": "revisamigrieta.appspot.com",
+ "basePath": "/_ah/api",
+ "schemes": [
+  "https"
+ ],
+ "consumes": [
+  "application/json"
+ ],
+ "produces": [
+  "application/json"
+ ],
+ "paths": {
+  "/grieta": {
+   "get": {
+    "operationId": "GrietaRetrieveAllGrietas",
+    "parameters": [ ],
+    "responses": {
+     "200": {
+      "description": "A successful response",
+      "schema": {
+       "$ref": "#/definitions/GrietaModelCollection"
+      }
+     }
+    }
+   },
+   "post": {
+    "operationId": "GrietaPublish",
+    "parameters": [
+     {
+      "name": "critica",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "desplomes",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "desprendimiento",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "diagonalConHorizontalDePiso",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "diagonalEnLozaDeEsquinaACentro",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "externa",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "golpeteo",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "hundimiento",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "interna",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "loza",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "message",
+      "in": "query",
+      "required": true,
+      "type": "string"
+     },
+     {
+      "name": "paralelaAPiso",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "pared",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "pisosHuecos",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "vibraciones",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "latitude",
+      "in": "query",
+      "required": true,
+      "type": "number",
+      "format": "float"
+     },
+     {
+      "name": "longitude",
+      "in": "query",
+      "required": true,
+      "type": "number",
+      "format": "float"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "A successful response"
+     }
+    },
+    "security": [
+     {
+      "firebase": [ ]
+     }
+    ],
+    "x-security": [
+     {
+      "firebase": {
+       "audiences": [
+        "revisamigrieta"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "/grieta/{grietaId}/revision": {
+   "get": {
+    "operationId": "GrietaRetrieveAllGrietasReview",
+    "parameters": [
+     {
+      "name": "grietaId",
+      "in": "path",
+      "required": true,
+      "type": "string"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "A successful response",
+      "schema": {
+       "$ref": "#/definitions/RevisionModelCollection"
+      }
+     }
+    }
+   }
+  },
+  "/grieta/{grietaId}/revision/{revisionId}": {
+   "get": {
+    "operationId": "GrietaRetrieveGrietasReview",
+    "parameters": [
+     {
+      "name": "grietaId",
+      "in": "path",
+      "required": true,
+      "type": "string"
+     },
+     {
+      "name": "revisionId",
+      "in": "path",
+      "required": true,
+      "type": "string"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "A successful response",
+      "schema": {
+       "$ref": "#/definitions/RevisionModel"
+      }
+     }
+    }
+   }
+  },
+  "/grieta/{id}": {
+   "get": {
+    "operationId": "GrietaRetrieveGrietas",
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "A successful response",
+      "schema": {
+       "$ref": "#/definitions/GrietaModel"
+      }
+     }
+    }
+   }
+  },
+  "/grieta/{id}/revision": {
+   "post": {
+    "operationId": "GrietaPublishReview",
+    "parameters": [
+     {
+      "name": "comentariosAdicionales",
+      "in": "query",
+      "required": true,
+      "type": "string"
+     },
+     {
+      "name": "diagonalEnLozaDeEsquinaACentro",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "grietasFormanDiagonalDelPiso",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "grietasParalelasAPiso",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "peligroInminente",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "loza",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "piso",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "type": "string"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "A successful response"
+     }
+    },
+    "security": [
+     {
+      "firebase": [ ]
+     }
+    ],
+    "x-security": [
+     {
+      "firebase": {
+       "audiences": [
+        "revisamigrieta"
+       ]
+      }
+     }
+    ]
+   }
+  }
+ },
+ "securityDefinitions": {
+  "firebase": {
+   "type": "oauth2",
+   "authorizationUrl": "",
+   "flow": "implicit",
+   "x-google-issuer": "https://securetoken.google.com/revisamigrieta",
+   "x-google-jwks_uri": "https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+  }
+ },
+ "definitions": {
+  "GrietaModel": {
+   "properties": {
+    "critica": {
+     "type": "boolean"
+    },
+    "desplomes": {
+     "type": "boolean"
+    },
+    "desprendimiento": {
+     "type": "boolean"
+    },
+    "diagonalConHorizontalDePiso": {
+     "type": "boolean"
+    },
+    "diagonalEnLozaDeEsquinaACentro": {
+     "type": "boolean"
+    },
+    "externa": {
+     "type": "boolean"
+    },
+    "geoPt": {
+     "$ref": "#/definitions/GeoPt"
+    },
+    "golpeteo": {
+     "type": "boolean"
+    },
+    "hundimientos": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int64"
+    },
+    "interna": {
+     "type": "boolean"
+    },
+    "loza": {
+     "type": "boolean"
+    },
+    "message": {
+     "type": "string"
+    },
+    "paralelaAlPiso": {
+     "type": "boolean"
+    },
+    "pared": {
+     "type": "boolean"
+    },
+    "pisosHuecos": {
+     "type": "boolean"
+    },
+    "reportadaPor": {
+     "type": "string"
+    },
+    "vibraciones": {
+     "type": "boolean"
+    }
+   }
+  },
+  "RevisionModelCollection": {
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/RevisionModel"
+     }
+    }
+   }
+  },
+  "RevisionModel": {
+   "properties": {
+    "comentariosAdicionales": {
+     "type": "string"
+    },
+    "createdOn": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "diagonalEnLozaDeEsquinaACentro": {
+     "type": "boolean"
+    },
+    "grietaModelRef": {
+     "$ref": "#/definitions/GrietaModel"
+    },
+    "grietasFormanDiagonalDelPiso": {
+     "type": "boolean"
+    },
+    "grietasParalelasAPiso": {
+     "type": "boolean"
+    },
+    "id": {
+     "type": "integer",
+     "format": "int64"
+    },
+    "loza": {
+     "type": "boolean"
+    },
+    "peligroIniminente": {
+     "type": "boolean"
+    },
+    "piso": {
+     "type": "boolean"
+    },
+    "revisadaPor": {
+     "type": "string"
+    }
+   }
+  },
+  "GeoPt": {
+   "properties": {
+    "latitude": {
+     "type": "number",
+     "format": "float"
+    },
+    "longitude": {
+     "type": "number",
+     "format": "float"
+    }
+   }
+  },
+  "GrietaModelCollection": {
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/GrietaModel"
+     }
+    }
+   }
+  }
+ }
+}
