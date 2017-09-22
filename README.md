@@ -12,13 +12,36 @@
 
 Tomar de referencia [openapi.json](https://github.com/digaresc/revisamigrieta-api-backend/blob/master/openapi.json) para frontend o apps que consuman el api.
 
-- Documentación del API: [http://digaresc.info/revisamigrieta-api-backend/](http://digaresc.info/revisamigrieta-api-backend/)
-- Endpoint de subida de archivos:
-[https://files-dot-revisamigrieta.appspot.com/images/](https://files-dot-revisamigrieta.appspot.com/images/) - *POST form-data multipart* 
+Documentación del API: [http://digaresc.info/revisamigrieta-api-backend/](http://digaresc.info/revisamigrieta-api-backend/)
+Endpoint de subida de archivos:
 
-Pasos para hacer submit de grietas:
+HTTP URL: [https://files-dot-revisamigrieta.appspot.com/images/](https://files-dot-revisamigrieta.appspot.com/images/)
+HTTP Method: POST form-data multipart 
 
-1. Subir la imagen al endpoint de archivos. Al subir la imagen se recibe un id de grieta, el cual es requerido para continuar con el formulario.
+### Pasos para hacer submit de grietas:
 
-2. Agregar grietaId al endpoint de subida de información de grieta. Sin un id previamente obtenido de subir imagenes/video, no sera posible subir información.
+Subir la imagen al endpoint de archivos. Al subir la imagen se recibe un id de grieta, el cual es requerido para continuar con el formulario.
 
+Agregar grietaId al endpoint de subida de información de grieta. Sin un id previamente obtenido de subir imagenes/video, no sera posible subir información.
+
+Ejemplo de imagenes:
+
+- Todas las imagenes se guardan en formato fuente: [Imagen tamaño completo](https://storage.googleapis.com/revisamigrieta-images/3f6cc669-c105-4e60-9106-a188820df25e-1506069507417.jpeg).
+- - Todas las imagenes cuentan con un thumb: [Imagen 300*300](https://storage.googleapis.com/revisamigrieta-images/3f6cc669-c105-4e60-9106-a188820df25e-1506069507417-thumb.jpeg).
+
+CURL example:
+
+``` curl -X POST \
+  https://files-dot-revisamigrieta.appspot.com/images/ \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: multipart/form-data;' \
+  -F file1=@Foto.jpeg \
+  -F file2=@IMG_2977.jpg \
+  -F file3=@IMG_20170905_183133149.jpg 
+  ```
+  
+Response:
+
+``` {
+    "grietaId": 5634472569470976
+} ```
