@@ -12,3 +12,5 @@
 
 Tomar de referencia [openapi.json](https://github.com/digaresc/revisamigrieta-api-backend/blob/master/openapi.json) para frontend o apps que consuman el api.
 
+Documentación del API: [http://digaresc.info/revisamigrieta-api-backend/](http://digaresc.info/revisamigrieta-api-backend/)
+
