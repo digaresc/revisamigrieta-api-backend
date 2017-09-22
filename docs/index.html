@@ -34,6 +34,14 @@
           <!-- </ul>
               </section> -->
           <!-- <section>
+                <a href="#path--grietas-pending">/grietas/pending</a>
+                <ul> -->
+          <!-- <li> -->
+          <a href="#operation--grietas-pending-get"> GET /grietas/pending </a>
+          <!-- </li> -->
+          <!-- </ul>
+              </section> -->
+          <!-- <section>
                 <a href="#path--grietas--grietaId--revisiones">/grietas/{grietaId}/revisiones</a>
                 <ul> -->
           <!-- <li> -->
@@ -207,6 +215,7 @@
       <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
     }
   ]
@@ -632,6 +641,79 @@
               </div>
             </div>
           </div>
+          <span id="path--grietas-pending"></span>
+          <div id="operation--grietas-pending-get" class="operation panel" data-traverse-target="operation--grietas-pending-get">
+            <h2 class="operation-title">
+              <span class="operation-name">
+                <span class="operation-name">GET</span>
+                <span class="operation-path">/grietas/pending</span>
+              </span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/GrietaModelCollection">GrietaModelCollection</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>A successful response</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;items&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;files&quot;</span>: [
+        <span class="hljs-string">&quot;string&quot;</span>
+      ],
+      <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+        <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
+        <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
+      },
+      <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
+      <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    }
+  ]
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
           <span id="path--grietas--grietaId--revisiones"></span>
           <div id="operation--grietas--grietaId--revisiones-get" class="operation panel" data-traverse-target="operation--grietas--grietaId--revisiones-get">
             <h2 class="operation-title">
@@ -721,6 +803,7 @@
         <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
       },
       <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
@@ -846,6 +929,7 @@
     <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
   },
   <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
@@ -945,6 +1029,7 @@
   <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
 }
 </code></pre>
@@ -1275,6 +1360,11 @@
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
+                    <dt data-property-name="revisada">
+                      <span class="json-property-name">revisada:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
                     <dt data-property-name="vibraciones">
                       <span class="json-property-name">vibraciones:</span>
                       <span class="json-property-type">boolean</span>
@@ -1310,6 +1400,7 @@
   <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
 }
 </code></pre>
@@ -1372,6 +1463,7 @@
         <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
       },
       <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
@@ -1498,6 +1590,7 @@
     <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
   },
   <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
@@ -1605,6 +1698,7 @@
       <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
     }
   ]

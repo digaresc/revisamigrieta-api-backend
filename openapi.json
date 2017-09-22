@@ -165,6 +165,20 @@
     ]
    }
   },
+  "/grietas/pending": {
+   "get": {
+    "operationId": "GrietaRetrieveAllPendingGrietas",
+    "parameters": [ ],
+    "responses": {
+     "200": {
+      "description": "A successful response",
+      "schema": {
+       "$ref": "#/definitions/GrietaModelCollection"
+      }
+     }
+    }
+   }
+  },
   "/grietas/{grietaId}/revisiones": {
    "get": {
     "operationId": "GrietaRetrieveAllGrietasReview",
@@ -378,6 +392,9 @@
     },
     "reportadaPor": {
      "type": "string"
+    },
+    "revisada": {
+     "type": "boolean"
     },
     "vibraciones": {
      "type": "boolean"

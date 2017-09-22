@@ -51,6 +51,9 @@ public class GrietaModel {
 	private boolean diagonalEnLozaDeEsquinaACentro;
 
 	@Index
+	private boolean revisada;
+
+	@Index
 	private Date createdOn;
 
 	@Index
@@ -205,5 +208,13 @@ public class GrietaModel {
 
 	public void setFiles(ArrayList<String> files) {
 		this.files = files;
+	}
+
+	public boolean isRevisada() {
+		return revisada;
+	}
+
+	public void setRevisada(boolean revisada) {
+		this.revisada = revisada;
 	}
 }
