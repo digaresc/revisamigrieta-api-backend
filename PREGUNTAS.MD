@@ -20,9 +20,9 @@ Comentarios adicionales
 
 MAPA
 
-¿Losa o pared?
+Tipo
 
-SI/NO
+LOSA/PARED
 
 ¿Interno o externo?
 
@@ -36,7 +36,11 @@ SI/NO
 
 SI/NO
 
-¿Las grietas forman una diagonal con la horizontal del piso o estan paralelas a este?
+¿Las grietas forman una diagonal con la horizontal del piso?
+
+SI/NO
+
+¿Las grietas son paralelas al piso?
 
 SI/NO
 
