@@ -30,9 +30,10 @@ Ejemplo de imagenes:
 - Todas las imagenes se guardan en formato fuente: [Imagen tamaño completo](https://storage.googleapis.com/revisamigrieta-images/3f6cc669-c105-4e60-9106-a188820df25e-1506069507417.jpeg).
 - - Todas las imagenes cuentan con un thumb: [Imagen 300*300](https://storage.googleapis.com/revisamigrieta-images/3f6cc669-c105-4e60-9106-a188820df25e-1506069507417-thumb.jpeg).
 
-CURL example:
+Ejemplo en CURL:
 
-``` curl -X POST \
+``` 
+  curl -X POST \
   https://revisamigrieta.appspot.com/_ah/api/upload \
   -H 'cache-control: no-cache' \
   -H 'content-type: multipart/form-data;' \
