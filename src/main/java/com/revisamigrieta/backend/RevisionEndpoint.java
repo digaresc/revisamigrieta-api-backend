@@ -1,7 +1,12 @@
 package com.revisamigrieta.backend;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.Query;
 import com.revisamigrieta.backend.models.GrietaModel;
 import com.revisamigrieta.backend.models.RevisionModel;
+import com.revisamigrieta.backend.models.dao.GrietaDao;
 import com.revisamigrieta.backend.models.dao.RevisionDao;
 import com.google.api.server.spi.auth.EspAuthenticator;
 import com.google.api.server.spi.auth.common.User;
@@ -9,6 +14,7 @@ import com.google.api.server.spi.config.*;
 import com.google.api.server.spi.response.UnauthorizedException;
 import com.googlecode.objectify.Key;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -47,13 +53,11 @@ public class RevisionEndpoint {
 			issuerAudiences = {@ApiIssuerAudience(name = "firebase",
 					audiences = {"revisamigrieta"})})
 	public void publishReview(User user,
-	                          @Named("comentariosAdicionales") String comentariosAdicionales,
-	                          @Named("diagonalEnLozaDeEsquinaACentro") boolean diagonalEnLozaDeEsquinaACentro,
-	                          @Named("grietasFormanDiagonalDelPiso") boolean grietasFormanDiagonalDelPiso,
-	                          @Named("grietasParalelasAPiso") boolean grietasParalelasAPiso,
+	                          @Named("comentarios") String comentarios,
+	                          @Named("diagonalesLosa") boolean diagonalesLosa,
+	                          @Named("diagonalesPiso") boolean diagonalesPiso,
+	                          @Named("paralelasPiso") boolean paralelasPiso,
 	                          @Named("peligroInminente") boolean peligroInminente,
-	                          @Named("loza") boolean loza,
-	                          @Named("piso") boolean piso,
 	                          @Named("id") String id) throws UnauthorizedException {
 		if (user == null) {
 			throw new UnauthorizedException("Invalid credentials");
@@ -61,20 +65,23 @@ public class RevisionEndpoint {
 		RevisionModel revisionModel = new RevisionModel();
 
 		revisionModel.setGrietaModelRef(id);
-		revisionModel.setComentariosAdicionales(comentariosAdicionales);
-		revisionModel.setDiagonalEnLozaDeEsquinaACentro(diagonalEnLozaDeEsquinaACentro);
-		revisionModel.setGrietasFormanDiagonalDelPiso(grietasFormanDiagonalDelPiso);
-		revisionModel.setGrietasParalelasAPiso(grietasParalelasAPiso);
-		revisionModel.setLoza(loza);
-		revisionModel.setPeligroIniminente(peligroInminente);
-		revisionModel.setPiso(piso);
 		revisionModel.setRevisadaPor(user.getId());
+
+		revisionModel.setComentarios(comentarios);
+		revisionModel.setDiagonalesLosa(diagonalesLosa);
+		revisionModel.setDiagonalesPiso(diagonalesPiso);
+		revisionModel.setParalelasPiso(paralelasPiso);
+		revisionModel.setPeligroInminente(peligroInminente);
+
+		RevisionDao revisionDao = new RevisionDao();
+
+
 
 		if(!revisionModel.getGrietaModelRef().isRevisada()){
 			revisionModel.getGrietaModelRef().setRevisada(true);
 		}
 
-		ofy().save().entity(revisionModel).now();
+		revisionDao.put(revisionModel);
 	}
 	// [END publish_method]
 
@@ -100,5 +107,8 @@ public class RevisionEndpoint {
 		return revisionModel;
 	}
 	// [END retrieveGrieta_method]
+
+
+
 
 }

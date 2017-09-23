@@ -74,9 +74,12 @@
           <!-- </ul>
               </section> -->
           <h5>Schema Definitions</h5>
+          <a href="#definition-UbicacionEnum"> UbicacionEnum </a>
           <a href="#definition-GrietaModel"> GrietaModel </a>
           <a href="#definition-RevisionModelCollection"> RevisionModelCollection </a>
+          <a href="#definition-EstadoDeObra"> EstadoDeObra </a>
           <a href="#definition-RevisionModel"> RevisionModel </a>
+          <a href="#definition-TipoEnum"> TipoEnum </a>
           <a href="#definition-GeoPt"> GeoPt </a>
           <a href="#definition-GrietaModelCollection"> GrietaModelCollection </a>
         </nav>
@@ -192,31 +195,32 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;items&quot;</span>: [
     {
-      <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+        <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+      },
       <span class="hljs-attr">&quot;files&quot;</span>: [
         <span class="hljs-string">&quot;string&quot;</span>
       ],
-      <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+      <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
         <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
         <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
       },
-      <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-      <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-      <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+      <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     }
   ]
 }
@@ -238,7 +242,7 @@
                 <section class="swagger-request-params">
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">critica</div>
+                      <div class="prop-title">mas20porciento</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -249,6 +253,26 @@
                     <div class="prop-name param-label">type</div>
                     <div class="prop-value">
                       <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">query</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">comentario</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </div>
                   </div>
@@ -279,66 +303,6 @@
                   <div class="prop-row prop-group">
                     <div class="prop-name">
                       <div class="prop-title">desprendimiento</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">diagonalConHorizontalDePiso</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">diagonalEnLozaDeEsquinaACentro</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">externa</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -398,106 +362,6 @@
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">interna</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">loza</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">message</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">string</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">paralelaAPiso</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">pared</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
                       <div class="prop-title">pisosHuecos</div>
                       <span class="json-property-required"></span>
                     </div>
@@ -509,6 +373,26 @@
                     <div class="prop-name param-label">type</div>
                     <div class="prop-value">
                       <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">query</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">tweet</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </div>
                   </div>
@@ -580,7 +464,7 @@
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">grietaId</div>
+                      <div class="prop-title">tipo</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -590,8 +474,95 @@
                   <div class="prop-row prop-inner">
                     <div class="prop-name param-label">type</div>
                     <div class="prop-value">
-                      <span class="json-property-type">integer</span>
-                      <span class="json-property-format">(int64)</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">INTERNA</span>,
+                        <span class="json-property-enum-item">EXTERNA</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">query</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">diagonales</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">query</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">paralelas</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">query</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">ubicacion</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">LOSA</span>,
+                        <span class="json-property-enum-item">PISO</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">in</div>
+                    <div class="prop-value">query</div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">filesId</div>
+                      <span class="json-property-required"></span>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name param-label">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </div>
                   </div>
@@ -680,31 +651,32 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;items&quot;</span>: [
     {
-      <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+        <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+      },
       <span class="hljs-attr">&quot;files&quot;</span>: [
         <span class="hljs-string">&quot;string&quot;</span>
       ],
-      <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+      <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
         <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
         <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
       },
-      <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-      <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-      <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+      <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     }
   ]
 }
@@ -776,42 +748,42 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;items&quot;</span>: [
     {
-      <span class="hljs-attr">&quot;comentariosAdicionales&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;comentarios&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;grietaModelRef&quot;</span>: {
-        <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+        <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+          <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+        },
         <span class="hljs-attr">&quot;files&quot;</span>: [
           <span class="hljs-string">&quot;string&quot;</span>
         ],
-        <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+        <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
           <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
           <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
         },
-        <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-        <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-        <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+        <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+        <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
       },
-      <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;grietasParalelasAPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-      <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;peligroIniminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;piso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;peligroInminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;revisadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     }
   ]
@@ -902,42 +874,42 @@
                     <span>(200 OK)</span>
                   </h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;comentariosAdicionales&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;comentarios&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
-  <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;grietaModelRef&quot;</span>: {
-    <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+    <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+      <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    },
     <span class="hljs-attr">&quot;files&quot;</span>: [
       <span class="hljs-string">&quot;string&quot;</span>
     ],
-    <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+    <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
       <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
       <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
     },
-    <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-    <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+    <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
-  <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;grietasParalelasAPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;peligroIniminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;piso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+  <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;peligroInminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;revisadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre>
@@ -1006,31 +978,32 @@
                     <span>(200 OK)</span>
                   </h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+    <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+  },
   <span class="hljs-attr">&quot;files&quot;</span>: [
     <span class="hljs-string">&quot;string&quot;</span>
   ],
-  <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+  <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
     <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
     <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
   },
-  <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+  <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+  <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1051,7 +1024,7 @@
                 <section class="swagger-request-params">
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">comentariosAdicionales</div>
+                      <div class="prop-title">comentarios</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -1071,7 +1044,7 @@
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">diagonalEnLozaDeEsquinaACentro</div>
+                      <div class="prop-title">diagonalesLosa</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -1091,7 +1064,7 @@
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">grietasFormanDiagonalDelPiso</div>
+                      <div class="prop-title">diagonalesPiso</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -1111,7 +1084,7 @@
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">grietasParalelasAPiso</div>
+                      <div class="prop-title">paralelasPiso</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -1132,46 +1105,6 @@
                   <div class="prop-row prop-group">
                     <div class="prop-name">
                       <div class="prop-title">peligroInminente</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">loza</div>
-                      <span class="json-property-required"></span>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">type</div>
-                    <div class="prop-value">
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-inner">
-                    <div class="prop-name param-label">in</div>
-                    <div class="prop-value">query</div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
-                      <div class="prop-title">piso</div>
                       <span class="json-property-required"></span>
                     </div>
                     <div class="prop-value">
@@ -1252,6 +1185,36 @@
             </div>
           </div>
           <h1>Schema Definitions</h1>
+          <div id="definition-UbicacionEnum" class="definition panel" data-traverse-target="definition-UbicacionEnum">
+            <h2 class="panel-title">
+              <a name="/definitions/UbicacionEnum"></a>UbicacionEnum:
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>  <span class="json-property-enum" title="Possible values">
+                      <span class="json-property-enum-item">LOSA</span>,
+                      <span class="json-property-enum-item">PISO</span>
+                </span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <span class="json-property-type">object</span>
+                <span class="json-property-enum" title="Possible values">
+                  <span class="json-property-enum-item">LOSA</span>,
+                  <span class="json-property-enum-item">PISO</span>
+                </span>
+                <span class="json-property-range" title="Value limits"></span>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
           <div id="definition-GrietaModel" class="definition panel" data-traverse-target="definition-GrietaModel">
             <h2 class="panel-title">
               <a name="/definitions/GrietaModel"></a>GrietaModel:
@@ -1265,34 +1228,34 @@
               <div class="doc-copy">
                 <section class="json-schema-properties">
                   <dl>
-                    <dt data-property-name="critica">
-                      <span class="json-property-name">critica:</span>
+                    <dt data-property-name="comentario">
+                      <span class="json-property-name">comentario:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="createdOn">
+                      <span class="json-property-name">createdOn:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-format">(date-time)</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="diagonalesLosa">
+                      <span class="json-property-name">diagonalesLosa:</span>
                       <span class="json-property-type">boolean</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="desplomes">
-                      <span class="json-property-name">desplomes:</span>
+                    <dt data-property-name="diagonalesPiso">
+                      <span class="json-property-name">diagonalesPiso:</span>
                       <span class="json-property-type">boolean</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="desprendimiento">
-                      <span class="json-property-name">desprendimiento:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="diagonalConHorizontalDePiso">
-                      <span class="json-property-name">diagonalConHorizontalDePiso:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="diagonalEnLozaDeEsquinaACentro">
-                      <span class="json-property-name">diagonalEnLozaDeEsquinaACentro:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="externa">
-                      <span class="json-property-name">externa:</span>
-                      <span class="json-property-type">boolean</span>
+                    <dt data-property-name="estadoDeObra">
+                      <span class="json-property-name">estadoDeObra:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/EstadoDeObra">EstadoDeObra</a>
+                        </span>
+                      </span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dt data-property-name="files">
@@ -1300,23 +1263,13 @@
                       <span class="json-property-type">string[]</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="geoPt">
-                      <span class="json-property-name">geoPt:</span>
+                    <dt data-property-name="geolocalizacion">
+                      <span class="json-property-name">geolocalizacion:</span>
                       <span class="json-property-type">
                         <span class="">
                           <a class="json-schema-ref" href="#/definitions/GeoPt">GeoPt</a>
                         </span>
                       </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="golpeteo">
-                      <span class="json-property-name">golpeteo:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="hundimientos">
-                      <span class="json-property-name">hundimientos:</span>
-                      <span class="json-property-type">boolean</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dt data-property-name="id">
@@ -1325,39 +1278,15 @@
                       <span class="json-property-format">(int64)</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="interna">
-                      <span class="json-property-name">interna:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="loza">
-                      <span class="json-property-name">loza:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="message">
-                      <span class="json-property-name">message:</span>
+                    <dt data-property-name="modifiedOn">
+                      <span class="json-property-name">modifiedOn:</span>
                       <span class="json-property-type">string</span>
+                      <span class="json-property-format">(date-time)</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="paralelaAlPiso">
-                      <span class="json-property-name">paralelaAlPiso:</span>
+                    <dt data-property-name="paralelasPiso">
+                      <span class="json-property-name">paralelasPiso:</span>
                       <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="pared">
-                      <span class="json-property-name">pared:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="pisosHuecos">
-                      <span class="json-property-name">pisosHuecos:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="reportadaPor">
-                      <span class="json-property-name">reportadaPor:</span>
-                      <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                     <dt data-property-name="revisada">
@@ -1365,9 +1294,32 @@
                       <span class="json-property-type">boolean</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="vibraciones">
-                      <span class="json-property-name">vibraciones:</span>
-                      <span class="json-property-type">boolean</span>
+                    <dt data-property-name="tipo">
+                      <span class="json-property-name">tipo:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/TipoEnum">TipoEnum</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="tweet">
+                      <span class="json-property-name">tweet:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="ubicacionEnum">
+                      <span class="json-property-name">ubicacionEnum:</span>
+                      <span class="json-property-type">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/UbicacionEnum">UbicacionEnum</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="userId">
+                      <span class="json-property-name">userId:</span>
+                      <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
                   </dl>
@@ -1377,31 +1329,32 @@
                 <section>
                   <h5>Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+    <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+  },
   <span class="hljs-attr">&quot;files&quot;</span>: [
     <span class="hljs-string">&quot;string&quot;</span>
   ],
-  <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+  <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
     <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
     <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
   },
-  <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+  <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+  <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1436,45 +1389,114 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;items&quot;</span>: [
     {
-      <span class="hljs-attr">&quot;comentariosAdicionales&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;comentarios&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;grietaModelRef&quot;</span>: {
-        <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+        <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+          <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+        },
         <span class="hljs-attr">&quot;files&quot;</span>: [
           <span class="hljs-string">&quot;string&quot;</span>
         ],
-        <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+        <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
           <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
           <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
         },
-        <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-        <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-        <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+        <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
         <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+        <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
       },
-      <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;grietasParalelasAPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-      <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;peligroIniminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;piso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;peligroInminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;revisadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     }
   ]
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-EstadoDeObra" class="definition panel" data-traverse-target="definition-EstadoDeObra">
+            <h2 class="panel-title">
+              <a name="/definitions/EstadoDeObra"></a>EstadoDeObra:
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="desplomes">
+                      <span class="json-property-name">desplomes:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="desprendimiento">
+                      <span class="json-property-name">desprendimiento:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="golpeteo">
+                      <span class="json-property-name">golpeteo:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="hundimientos">
+                      <span class="json-property-name">hundimientos:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="mas20porciento">
+                      <span class="json-property-name">mas20porciento:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="pisosHuecos">
+                      <span class="json-property-name">pisosHuecos:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="vibraciones">
+                      <span class="json-property-name">vibraciones:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1495,8 +1517,8 @@
               <div class="doc-copy">
                 <section class="json-schema-properties">
                   <dl>
-                    <dt data-property-name="comentariosAdicionales">
-                      <span class="json-property-name">comentariosAdicionales:</span>
+                    <dt data-property-name="comentarios">
+                      <span class="json-property-name">comentarios:</span>
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -1506,8 +1528,13 @@
                       <span class="json-property-format">(date-time)</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="diagonalEnLozaDeEsquinaACentro">
-                      <span class="json-property-name">diagonalEnLozaDeEsquinaACentro:</span>
+                    <dt data-property-name="diagonalesLosa">
+                      <span class="json-property-name">diagonalesLosa:</span>
+                      <span class="json-property-type">boolean</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="diagonalesPiso">
+                      <span class="json-property-name">diagonalesPiso:</span>
                       <span class="json-property-type">boolean</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -1520,34 +1547,25 @@
                       </span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="grietasFormanDiagonalDelPiso">
-                      <span class="json-property-name">grietasFormanDiagonalDelPiso:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="grietasParalelasAPiso">
-                      <span class="json-property-name">grietasParalelasAPiso:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
                     <dt data-property-name="id">
                       <span class="json-property-name">id:</span>
                       <span class="json-property-type">integer</span>
                       <span class="json-property-format">(int64)</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="loza">
-                      <span class="json-property-name">loza:</span>
+                    <dt data-property-name="modifiedOn">
+                      <span class="json-property-name">modifiedOn:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-format">(date-time)</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="paralelasPiso">
+                      <span class="json-property-name">paralelasPiso:</span>
                       <span class="json-property-type">boolean</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="peligroIniminente">
-                      <span class="json-property-name">peligroIniminente:</span>
-                      <span class="json-property-type">boolean</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="piso">
-                      <span class="json-property-name">piso:</span>
+                    <dt data-property-name="peligroInminente">
+                      <span class="json-property-name">peligroInminente:</span>
                       <span class="json-property-type">boolean</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -1563,45 +1581,75 @@
                 <section>
                   <h5>Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;comentariosAdicionales&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;comentarios&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
-  <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;grietaModelRef&quot;</span>: {
-    <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+    <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+      <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    },
     <span class="hljs-attr">&quot;files&quot;</span>: [
       <span class="hljs-string">&quot;string&quot;</span>
     ],
-    <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+    <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
       <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
       <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
     },
-    <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-    <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+    <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
   },
-  <span class="hljs-attr">&quot;grietasFormanDiagonalDelPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;grietasParalelasAPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-  <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;peligroIniminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-  <span class="hljs-attr">&quot;piso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+  <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+  <span class="hljs-attr">&quot;peligroInminente&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
   <span class="hljs-attr">&quot;revisadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-TipoEnum" class="definition panel" data-traverse-target="definition-TipoEnum">
+            <h2 class="panel-title">
+              <a name="/definitions/TipoEnum"></a>TipoEnum:
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>  <span class="json-property-enum" title="Possible values">
+                      <span class="json-property-enum-item">INTERNA</span>,
+                      <span class="json-property-enum-item">EXTERNA</span>
+                </span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <span class="json-property-type">object</span>
+                <span class="json-property-enum" title="Possible values">
+                  <span class="json-property-enum-item">INTERNA</span>,
+                  <span class="json-property-enum-item">EXTERNA</span>
+                </span>
+                <span class="json-property-range" title="Value limits"></span>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
                   <!-- </div> -->
                 </section>
               </div>
@@ -1675,31 +1723,32 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;items&quot;</span>: [
     {
-      <span class="hljs-attr">&quot;critica&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalConHorizontalDePiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;diagonalEnLozaDeEsquinaACentro&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;externa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;comentario&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;createdOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesLosa&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;diagonalesPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;estadoDeObra&quot;</span>: {
+        <span class="hljs-attr">&quot;desplomes&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;desprendimiento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;mas20porciento&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+      },
       <span class="hljs-attr">&quot;files&quot;</span>: [
         <span class="hljs-string">&quot;string&quot;</span>
       ],
-      <span class="hljs-attr">&quot;geoPt&quot;</span>: {
+      <span class="hljs-attr">&quot;geolocalizacion&quot;</span>: {
         <span class="hljs-attr">&quot;latitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>,
         <span class="hljs-attr">&quot;longitude&quot;</span>: <span class="hljs-string">&quot;number (float)&quot;</span>
       },
-      <span class="hljs-attr">&quot;golpeteo&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;hundimientos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer (int64)&quot;</span>,
-      <span class="hljs-attr">&quot;interna&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;loza&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-      <span class="hljs-attr">&quot;paralelaAlPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;pared&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;pisosHuecos&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;reportadaPor&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;modifiedOn&quot;</span>: <span class="hljs-string">&quot;string (date-time)&quot;</span>,
+      <span class="hljs-attr">&quot;paralelasPiso&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
       <span class="hljs-attr">&quot;revisada&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-      <span class="hljs-attr">&quot;vibraciones&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+      <span class="hljs-attr">&quot;tweet&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
     }
   ]
 }
