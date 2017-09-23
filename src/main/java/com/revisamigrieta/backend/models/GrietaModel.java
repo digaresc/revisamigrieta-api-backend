@@ -15,40 +15,19 @@ public class GrietaModel {
 	public Long id;
 
 	@Index
-	private boolean pared;
-	@Index
-	private boolean externa;
-	@Index
-	private boolean interna;
-	@Index
-	private boolean critica;
-	@Index
-	private boolean hundimientos;
-	@Index
-	private boolean desplomes;
-	@Index
-	private boolean golpeteo;
-	@Index
-	private boolean desprendimiento;
-	@Index
-	private boolean vibraciones;
-	@Index
-	private boolean pisosHuecos;
-	@Index
-	private boolean diagonalConHorizontalDePiso;
-	@Index
-	private boolean paralelaAlPiso;
-	@Index
-	private boolean loza;
-
-	@Index
 	private ArrayList<String> files;
 
 	@Index
-	private GeoPt geoPt;
+	private GeoPt geolocalizacion;
 
 	@Index
-	private boolean diagonalEnLozaDeEsquinaACentro;
+	private TipoEnum tipo;
+
+	@Index
+	private UbicacionEnum ubicacionEnum;
+
+	@Index
+	private String tweet;
 
 	@Index
 	private boolean revisada;
@@ -57,149 +36,29 @@ public class GrietaModel {
 	private Date createdOn;
 
 	@Index
-	private String message;
+	private Date modifiedOn;
+
 	@Index
-	private String reportadaPor;
+	private String comentario;
+
+	@Index
+	private boolean diagonalesLosa;
+
+	@Index
+	private boolean diagonalesPiso;
+
+	@Index
+	private boolean paralelasPiso;
+
+	@Index
+	private String userId;
+
+
+	@Index
+	private EstadoDeObra estadoDeObra;
 
 	public GrietaModel() {
 		createdOn = new Date();
-	}
-
-
-	public String getMessage() {
-		return this.message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public boolean isPared() {
-		return pared;
-	}
-
-	public void setPared(boolean pared) {
-		this.pared = pared;
-	}
-
-	public boolean isExterna() {
-		return externa;
-	}
-
-	public void setExterna(boolean externa) {
-		this.externa = externa;
-	}
-
-	public boolean isInterna() {
-		return interna;
-	}
-
-	public void setInterna(boolean interna) {
-		this.interna = interna;
-	}
-
-	public boolean isCritica() {
-		return critica;
-	}
-
-	public void setCritica(boolean critica) {
-		this.critica = critica;
-	}
-
-	public boolean isHundimientos() {
-		return hundimientos;
-	}
-
-	public void setHundimientos(boolean hundimientos) {
-		this.hundimientos = hundimientos;
-	}
-
-	public boolean isDesplomes() {
-		return desplomes;
-	}
-
-	public void setDesplomes(boolean desplomes) {
-		this.desplomes = desplomes;
-	}
-
-	public boolean isGolpeteo() {
-		return golpeteo;
-	}
-
-	public void setGolpeteo(boolean golpeteo) {
-		this.golpeteo = golpeteo;
-	}
-
-	public boolean isDesprendimiento() {
-		return desprendimiento;
-	}
-
-	public void setDesprendimiento(boolean desprendimiento) {
-		this.desprendimiento = desprendimiento;
-	}
-
-	public boolean isVibraciones() {
-		return vibraciones;
-	}
-
-	public void setVibraciones(boolean vibraciones) {
-		this.vibraciones = vibraciones;
-	}
-
-	public boolean isPisosHuecos() {
-		return pisosHuecos;
-	}
-
-	public void setPisosHuecos(boolean pisosHuecos) {
-		this.pisosHuecos = pisosHuecos;
-	}
-
-	public boolean isDiagonalConHorizontalDePiso() {
-		return diagonalConHorizontalDePiso;
-	}
-
-	public void setDiagonalConHorizontalDePiso(boolean diagonalConHorizontalDePiso) {
-		this.diagonalConHorizontalDePiso = diagonalConHorizontalDePiso;
-	}
-
-	public boolean isParalelaAlPiso() {
-		return paralelaAlPiso;
-	}
-
-	public void setParalelaAlPiso(boolean paralelaAlPiso) {
-		this.paralelaAlPiso = paralelaAlPiso;
-	}
-
-	public boolean isLoza() {
-		return loza;
-	}
-
-	public void setLoza(boolean loza) {
-		this.loza = loza;
-	}
-
-	public boolean isDiagonalEnLozaDeEsquinaACentro() {
-		return diagonalEnLozaDeEsquinaACentro;
-	}
-
-	public void setDiagonalEnLozaDeEsquinaACentro(boolean diagonalEnLozaDeEsquinaACentro) {
-		this.diagonalEnLozaDeEsquinaACentro = diagonalEnLozaDeEsquinaACentro;
-	}
-
-	public String getReportadaPor() {
-		return reportadaPor;
-	}
-
-	public void setReportadaPor(String reportadaPor) {
-		this.reportadaPor = reportadaPor;
-	}
-
-	public GeoPt getGeoPt() {
-		return geoPt;
-	}
-
-	public void setGeoPt(GeoPt geoPt) {
-		this.geoPt = geoPt;
 	}
 
 	public ArrayList<String> getFiles() {
@@ -210,6 +69,38 @@ public class GrietaModel {
 		this.files = files;
 	}
 
+	public GeoPt getGeolocalizacion() {
+		return geolocalizacion;
+	}
+
+	public void setGeolocalizacion(GeoPt geolocalizacion) {
+		this.geolocalizacion = geolocalizacion;
+	}
+
+	public TipoEnum getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoEnum tipo) {
+		this.tipo = tipo;
+	}
+
+	public UbicacionEnum getUbicacionEnum() {
+		return ubicacionEnum;
+	}
+
+	public void setUbicacionEnum(UbicacionEnum ubicacionEnum) {
+		this.ubicacionEnum = ubicacionEnum;
+	}
+
+	public String getTweet() {
+		return tweet;
+	}
+
+	public void setTweet(String tweet) {
+		this.tweet = tweet;
+	}
+
 	public boolean isRevisada() {
 		return revisada;
 	}
@@ -217,4 +108,92 @@ public class GrietaModel {
 	public void setRevisada(boolean revisada) {
 		this.revisada = revisada;
 	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+	public boolean isDiagonalesLosa() {
+		return diagonalesLosa;
+	}
+
+	public void setDiagonalesLosa(boolean diagonalesLosa) {
+		this.diagonalesLosa = diagonalesLosa;
+	}
+
+	public boolean isDiagonalesPiso() {
+		return diagonalesPiso;
+	}
+
+	public void setDiagonalesPiso(boolean diagonalesPiso) {
+		this.diagonalesPiso = diagonalesPiso;
+	}
+
+	public boolean isParalelasPiso() {
+		return paralelasPiso;
+	}
+
+	public void setParalelasPiso(boolean paralelasPiso) {
+		this.paralelasPiso = paralelasPiso;
+	}
+
+	public EstadoDeObra getEstadoDeObra() {
+		return estadoDeObra;
+	}
+
+	public void setEstadoDeObra(EstadoDeObra estadoDeObra) {
+		this.estadoDeObra = estadoDeObra;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "GrietaModel{" +
+				"id=" + id +
+				", files=" + files +
+				", geolocalizacion=" + geolocalizacion +
+				", tipo=" + tipo +
+				", ubicacionEnum=" + ubicacionEnum +
+				", tweet='" + tweet + '\'' +
+				", revisada=" + revisada +
+				", createdOn=" + createdOn +
+				", modifiedOn=" + modifiedOn +
+				", comentario='" + comentario + '\'' +
+				", diagonalesLosa=" + diagonalesLosa +
+				", diagonalesPiso=" + diagonalesPiso +
+				", paralelasPiso=" + paralelasPiso +
+				", userId='" + userId + '\'' +
+				", estadoDeObra=" + estadoDeObra +
+				'}';
+	}
 }
+
+
+

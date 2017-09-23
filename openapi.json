@@ -33,10 +33,16 @@
     "operationId": "GrietaPublish",
     "parameters": [
      {
-      "name": "critica",
+      "name": "mas20porciento",
       "in": "query",
       "required": true,
       "type": "boolean"
+     },
+     {
+      "name": "comentario",
+      "in": "query",
+      "required": true,
+      "type": "string"
      },
      {
       "name": "desplomes",
@@ -46,24 +52,6 @@
      },
      {
       "name": "desprendimiento",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "diagonalConHorizontalDePiso",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "diagonalEnLozaDeEsquinaACentro",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "externa",
       "in": "query",
       "required": true,
       "type": "boolean"
@@ -81,40 +69,16 @@
       "type": "boolean"
      },
      {
-      "name": "interna",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "loza",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "message",
-      "in": "query",
-      "required": true,
-      "type": "string"
-     },
-     {
-      "name": "paralelaAPiso",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "pared",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
       "name": "pisosHuecos",
       "in": "query",
       "required": true,
       "type": "boolean"
+     },
+     {
+      "name": "tweet",
+      "in": "query",
+      "required": true,
+      "type": "string"
      },
      {
       "name": "vibraciones",
@@ -137,11 +101,42 @@
       "format": "float"
      },
      {
-      "name": "grietaId",
+      "name": "tipo",
       "in": "query",
       "required": true,
-      "type": "integer",
-      "format": "int64"
+      "type": "string",
+      "enum": [
+       "INTERNA",
+       "EXTERNA"
+      ]
+     },
+     {
+      "name": "diagonales",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "paralelas",
+      "in": "query",
+      "required": true,
+      "type": "boolean"
+     },
+     {
+      "name": "ubicacion",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "enum": [
+       "LOSA",
+       "PISO"
+      ]
+     },
+     {
+      "name": "filesId",
+      "in": "query",
+      "required": true,
+      "type": "string"
      }
     ],
     "responses": {
@@ -253,43 +248,31 @@
     "operationId": "GrietaPublishReview",
     "parameters": [
      {
-      "name": "comentariosAdicionales",
+      "name": "comentarios",
       "in": "query",
       "required": true,
       "type": "string"
      },
      {
-      "name": "diagonalEnLozaDeEsquinaACentro",
+      "name": "diagonalesLosa",
       "in": "query",
       "required": true,
       "type": "boolean"
      },
      {
-      "name": "grietasFormanDiagonalDelPiso",
+      "name": "diagonalesPiso",
       "in": "query",
       "required": true,
       "type": "boolean"
      },
      {
-      "name": "grietasParalelasAPiso",
+      "name": "paralelasPiso",
       "in": "query",
       "required": true,
       "type": "boolean"
      },
      {
       "name": "peligroInminente",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "loza",
-      "in": "query",
-      "required": true,
-      "type": "boolean"
-     },
-     {
-      "name": "piso",
       "in": "query",
       "required": true,
       "type": "boolean"
@@ -333,25 +316,29 @@
   }
  },
  "definitions": {
+  "UbicacionEnum": {
+   "enum": [
+    "LOSA",
+    "PISO"
+   ]
+  },
   "GrietaModel": {
    "properties": {
-    "critica": {
+    "comentario": {
+     "type": "string"
+    },
+    "createdOn": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "diagonalesLosa": {
      "type": "boolean"
     },
-    "desplomes": {
+    "diagonalesPiso": {
      "type": "boolean"
     },
-    "desprendimiento": {
-     "type": "boolean"
-    },
-    "diagonalConHorizontalDePiso": {
-     "type": "boolean"
-    },
-    "diagonalEnLozaDeEsquinaACentro": {
-     "type": "boolean"
-    },
-    "externa": {
-     "type": "boolean"
+    "estadoDeObra": {
+     "$ref": "#/definitions/EstadoDeObra"
     },
     "files": {
      "type": "array",
@@ -359,45 +346,34 @@
       "type": "string"
      }
     },
-    "geoPt": {
+    "geolocalizacion": {
      "$ref": "#/definitions/GeoPt"
-    },
-    "golpeteo": {
-     "type": "boolean"
-    },
-    "hundimientos": {
-     "type": "boolean"
     },
     "id": {
      "type": "integer",
      "format": "int64"
     },
-    "interna": {
+    "modifiedOn": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "paralelasPiso": {
      "type": "boolean"
-    },
-    "loza": {
-     "type": "boolean"
-    },
-    "message": {
-     "type": "string"
-    },
-    "paralelaAlPiso": {
-     "type": "boolean"
-    },
-    "pared": {
-     "type": "boolean"
-    },
-    "pisosHuecos": {
-     "type": "boolean"
-    },
-    "reportadaPor": {
-     "type": "string"
     },
     "revisada": {
      "type": "boolean"
     },
-    "vibraciones": {
-     "type": "boolean"
+    "tipo": {
+     "$ref": "#/definitions/TipoEnum"
+    },
+    "tweet": {
+     "type": "string"
+    },
+    "ubicacionEnum": {
+     "$ref": "#/definitions/UbicacionEnum"
+    },
+    "userId": {
+     "type": "string"
     }
    }
   },
@@ -411,44 +387,73 @@
     }
    }
   },
+  "EstadoDeObra": {
+   "properties": {
+    "desplomes": {
+     "type": "boolean"
+    },
+    "desprendimiento": {
+     "type": "boolean"
+    },
+    "golpeteo": {
+     "type": "boolean"
+    },
+    "hundimientos": {
+     "type": "boolean"
+    },
+    "mas20porciento": {
+     "type": "boolean"
+    },
+    "pisosHuecos": {
+     "type": "boolean"
+    },
+    "vibraciones": {
+     "type": "boolean"
+    }
+   }
+  },
   "RevisionModel": {
    "properties": {
-    "comentariosAdicionales": {
+    "comentarios": {
      "type": "string"
     },
     "createdOn": {
      "type": "string",
      "format": "date-time"
     },
-    "diagonalEnLozaDeEsquinaACentro": {
+    "diagonalesLosa": {
+     "type": "boolean"
+    },
+    "diagonalesPiso": {
      "type": "boolean"
     },
     "grietaModelRef": {
      "$ref": "#/definitions/GrietaModel"
     },
-    "grietasFormanDiagonalDelPiso": {
-     "type": "boolean"
-    },
-    "grietasParalelasAPiso": {
-     "type": "boolean"
-    },
     "id": {
      "type": "integer",
      "format": "int64"
     },
-    "loza": {
+    "modifiedOn": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "paralelasPiso": {
      "type": "boolean"
     },
-    "peligroIniminente": {
-     "type": "boolean"
-    },
-    "piso": {
+    "peligroInminente": {
      "type": "boolean"
     },
     "revisadaPor": {
      "type": "string"
     }
    }
+  },
+  "TipoEnum": {
+   "enum": [
+    "INTERNA",
+    "EXTERNA"
+   ]
   },
   "GeoPt": {
    "properties": {

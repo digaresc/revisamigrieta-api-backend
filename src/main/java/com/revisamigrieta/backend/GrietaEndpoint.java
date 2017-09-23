@@ -1,19 +1,20 @@
 package com.revisamigrieta.backend;
 
 import com.google.api.server.spi.response.NotFoundException;
-import com.google.appengine.api.datastore.Query;
-import com.revisamigrieta.backend.models.GrietaModel;
+import com.google.appengine.api.datastore.*;
+import com.googlecode.objectify.Key;
+import com.revisamigrieta.backend.models.*;
 import com.revisamigrieta.backend.models.dao.GrietaDao;
 import com.google.api.server.spi.auth.EspAuthenticator;
 import com.google.api.server.spi.auth.common.User;
 import com.google.api.server.spi.config.*;
 import com.google.api.server.spi.response.UnauthorizedException;
-import com.google.appengine.api.datastore.GeoPt;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
 import static com.revisamigrieta.backend.helpers.Constants.API_VERSION;
 
 /**
@@ -52,52 +53,56 @@ public class GrietaEndpoint {
 					audiences = {"revisamigrieta"})}
 	)
 	public void publish(User user,
-	                    @Named("critica") boolean critica,
+	                    @Named("mas20porciento") boolean mas20porciento,
+	                    @Named("comentario") String comentario,
 	                    @Named("desplomes") boolean desplomes,
 	                    @Named("desprendimiento") boolean desprendimiento,
-	                    @Named("diagonalConHorizontalDePiso") boolean diagonalConHorizontalDePiso,
-	                    @Named("diagonalEnLozaDeEsquinaACentro") boolean diagonalEnLozaDeEsquinaACentro,
-	                    @Named("externa") boolean externa,
 	                    @Named("golpeteo") boolean golpeteo,
 	                    @Named("hundimiento") boolean hundimiento,
-	                    @Named("interna") boolean interna,
-	                    @Named("loza") boolean loza,
-	                    @Named("message") String message,
-	                    @Named("paralelaAPiso") boolean paralelaAPiso,
-	                    @Named("pared") boolean pared,
 	                    @Named("pisosHuecos") boolean pisosHuecos,
+	                    @Named("tweet") String tweet,
 	                    @Named("vibraciones") boolean vibraciones,
 	                    @Named("latitude") float latitude,
 	                    @Named("longitude") float longitude,
-	                    @Named("grietaId") Long grietaId
+	                    @Named("tipo") TipoEnum tipo,
+	                    @Named("diagonales") boolean diagonales,
+	                    @Named("paralelas") boolean paralelas,
+	                    @Named("ubicacion") UbicacionEnum ubicacion,
+	                    @Named("filesId") String filesId
 	) throws UnauthorizedException, NotFoundException {
 		if (user == null) {
 			throw new UnauthorizedException("Invalid credentials");
 		}
 		GrietaDao grietaDao = new GrietaDao();
-		GrietaModel grietaModel = grietaDao.get(grietaId);
+		GrietaModel grietaModel = new GrietaModel();
 
-		if (grietaModel == null || grietaModel.getFiles().size() == 0 || grietaModel.getReportadaPor() != user.getId()) {
-			throw new NotFoundException("Una grieta require al menos una imagen");
+		EstadoDeObra estadoDeObra = new EstadoDeObra();
+		estadoDeObra.setMas20porciento(mas20porciento);
+		estadoDeObra.setDesplomes(desplomes);
+		estadoDeObra.setDesprendimiento(desprendimiento);
+		estadoDeObra.setGolpeteo(golpeteo);
+		estadoDeObra.setHundimientos(hundimiento);
+		estadoDeObra.setPisosHuecos(pisosHuecos);
+		estadoDeObra.setVibraciones(vibraciones);
+		grietaModel.setEstadoDeObra(estadoDeObra);
+
+		grietaModel.setUserId(user.getId());
+		grietaModel.setComentario(comentario);
+		grietaModel.setTipo(tipo);
+		grietaModel.setTweet(tweet);
+		grietaModel.setUbicacionEnum(ubicacion);
+		grietaModel.setGeolocalizacion(new GeoPt(latitude, longitude));
+
+		if(ubicacion == UbicacionEnum.LOSA){
+			grietaModel.setDiagonalesLosa(diagonales);
+		} else if(ubicacion == UbicacionEnum.PISO) {
+			grietaModel.setDiagonalesPiso(diagonales);
+			grietaModel.setParalelasPiso(paralelas);
+		} else{
+			throw new UnauthorizedException("Tipo de grieta requerido.");
 		}
 
-		grietaModel.setCritica(critica);
-		grietaModel.setDesplomes(desplomes);
-		grietaModel.setDesprendimiento(desprendimiento);
-		grietaModel.setDiagonalConHorizontalDePiso(diagonalConHorizontalDePiso);
-		grietaModel.setDiagonalEnLozaDeEsquinaACentro(diagonalEnLozaDeEsquinaACentro);
-		grietaModel.setExterna(externa);
-		grietaModel.setGolpeteo(golpeteo);
-		grietaModel.setHundimientos(hundimiento);
-		grietaModel.setInterna(interna);
-		grietaModel.setLoza(loza);
-		grietaModel.setMessage(message);
-		grietaModel.setParalelaAlPiso(paralelaAPiso);
-		grietaModel.setPared(pared);
-		grietaModel.setPisosHuecos(pisosHuecos);
-		grietaModel.setReportadaPor(user.getId());
-		grietaModel.setVibraciones(vibraciones);
-		grietaModel.setGeoPt(new GeoPt(latitude, longitude));
+
 
 
 		grietaDao.put(grietaModel);
@@ -135,6 +140,7 @@ public class GrietaEndpoint {
 	}
 	// [END retrieveAllGrietas_method]
 
+
 	// [START retrieveGrieta_method]
 	@ApiMethod(name = "retrieveGrietas", path = API_VERSION + "/grietas/{id}", httpMethod = ApiMethod.HttpMethod.GET)
 	public GrietaModel retrieveGrietas(@Named("id") String id) {
@@ -147,6 +153,8 @@ public class GrietaEndpoint {
 		return grietaModel;
 	}
 	// [END retrieveGrieta_method]
+
+
 
 
 }

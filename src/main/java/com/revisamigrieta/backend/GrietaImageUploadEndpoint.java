@@ -1,9 +1,13 @@
 package com.revisamigrieta.backend;
 
+import com.google.api.server.spi.response.NotFoundException;
+import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.appengine.api.images.Image;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.Transform;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 import com.google.appengine.tools.cloudstorage.*;
 import com.revisamigrieta.backend.models.GrietaModel;
@@ -46,6 +50,16 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 
 	@SuppressWarnings("serial")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+		UserService userService = UserServiceFactory.getUserService();
+		if (!userService.isUserLoggedIn()) {
+			throw new ServletException("Usuario not logged in");
+		}
+
+		String grietaId = req.getParameter("grietaId");
+		if(grietaId == null){
+			throw new ServletException("ID de grieta requerida");
+		}
+
 
 		String sctype = null, sfieldname, sname = null;
 		ServletFileUpload upload;
@@ -65,6 +79,8 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 
 				if (item.isFormField()) {
 					log.warning("Got a form field: " + item.getFieldName());
+
+
 				} else {
 					log.warning("Got an uploaded file: " + item.getFieldName() +
 							", name = " + item.getName());
@@ -124,13 +140,14 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 		}
 
 		GrietaDao grietaDao = new GrietaDao();
-		GrietaModel grietaModel = new GrietaModel();
+		GrietaModel grietaModel = grietaDao.get(Long.parseLong(grietaId));
+		ArrayList<String> grietaList = grietaModel.getFiles();
+		grietaList.addAll(fileList);
 		grietaModel.setFiles(fileList);
-		grietaModel.setReportadaPor("Diego");
 
 		GrietaModel grietaModelResponse = grietaDao.put(grietaModel);
 		HashMap<String, Long> response = new HashMap<>();
-		response.put("grietaId",grietaModel.id);
+		response.put("grietaId", grietaModel.id);
 
 		String json = new Gson().toJson(response);
 

@@ -21,24 +21,28 @@ public class RevisionModel {
 	Ref<GrietaModel> grietaModelRef;
 
 	@Index
-	private boolean piso;
+	private boolean diagonalesLosa;
+
 	@Index
-	private boolean loza;
+	private boolean paralelasPiso;
+
 	@Index
-	private boolean grietasFormanDiagonalDelPiso;
+	private boolean diagonalesPiso;
+
 	@Index
-	private boolean grietasParalelasAPiso;
+	private boolean peligroInminente;
+
 	@Index
-	private boolean diagonalEnLozaDeEsquinaACentro;
-	@Index
-	private boolean peligroIniminente;
-	@Index
-	private String comentariosAdicionales;
+	private String comentarios;
+
 	@Index
 	private String revisadaPor;
 
 	@Index
 	private Date createdOn;
+
+	@Index
+	private Date modifiedOn;
 
 	public RevisionModel() {
 		createdOn = new Date();
@@ -52,60 +56,44 @@ public class RevisionModel {
 		this.grietaModelRef = Ref.create(Key.create(GrietaModel.class, grietaModelId));
 	}
 
-	public boolean isPiso() {
-		return piso;
+	public boolean isDiagonalesLosa() {
+		return diagonalesLosa;
 	}
 
-	public void setPiso(boolean piso) {
-		this.piso = piso;
+	public void setDiagonalesLosa(boolean diagonalesLosa) {
+		this.diagonalesLosa = diagonalesLosa;
 	}
 
-	public boolean isLoza() {
-		return loza;
+	public boolean isParalelasPiso() {
+		return paralelasPiso;
 	}
 
-	public void setLoza(boolean loza) {
-		this.loza = loza;
+	public void setParalelasPiso(boolean paralelasPiso) {
+		this.paralelasPiso = paralelasPiso;
 	}
 
-	public boolean isGrietasFormanDiagonalDelPiso() {
-		return grietasFormanDiagonalDelPiso;
+	public boolean isDiagonalesPiso() {
+		return diagonalesPiso;
 	}
 
-	public void setGrietasFormanDiagonalDelPiso(boolean grietasFormanDiagonalDelPiso) {
-		this.grietasFormanDiagonalDelPiso = grietasFormanDiagonalDelPiso;
+	public void setDiagonalesPiso(boolean diagonalesPiso) {
+		this.diagonalesPiso = diagonalesPiso;
 	}
 
-	public boolean isGrietasParalelasAPiso() {
-		return grietasParalelasAPiso;
+	public boolean isPeligroInminente() {
+		return peligroInminente;
 	}
 
-	public void setGrietasParalelasAPiso(boolean grietasParalelasAPiso) {
-		this.grietasParalelasAPiso = grietasParalelasAPiso;
+	public void setPeligroInminente(boolean peligroInminente) {
+		this.peligroInminente = peligroInminente;
 	}
 
-	public boolean isDiagonalEnLozaDeEsquinaACentro() {
-		return diagonalEnLozaDeEsquinaACentro;
+	public String getComentarios() {
+		return comentarios;
 	}
 
-	public void setDiagonalEnLozaDeEsquinaACentro(boolean diagonalEnLozaDeEsquinaACentro) {
-		this.diagonalEnLozaDeEsquinaACentro = diagonalEnLozaDeEsquinaACentro;
-	}
-
-	public boolean isPeligroIniminente() {
-		return peligroIniminente;
-	}
-
-	public void setPeligroIniminente(boolean peligroIniminente) {
-		this.peligroIniminente = peligroIniminente;
-	}
-
-	public String getComentariosAdicionales() {
-		return comentariosAdicionales;
-	}
-
-	public void setComentariosAdicionales(String comentariosAdicionales) {
-		this.comentariosAdicionales = comentariosAdicionales;
+	public void setComentarios(String comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	public String getRevisadaPor() {
@@ -124,20 +112,27 @@ public class RevisionModel {
 		this.createdOn = createdOn;
 	}
 
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+
 	@Override
 	public String toString() {
 		return "RevisionModel{" +
 				"id=" + id +
 				", grietaModelRef=" + grietaModelRef +
-				", piso=" + piso +
-				", loza=" + loza +
-				", grietasFormanDiagonalDelPiso=" + grietasFormanDiagonalDelPiso +
-				", grietasParalelasAPiso=" + grietasParalelasAPiso +
-				", diagonalEnLozaDeEsquinaACentro=" + diagonalEnLozaDeEsquinaACentro +
-				", peligroIniminente=" + peligroIniminente +
-				", comentariosAdicionales='" + comentariosAdicionales + '\'' +
+				", diagonalesLosa=" + diagonalesLosa +
+				", paralelasPiso=" + paralelasPiso +
+				", diagonalesPiso=" + diagonalesPiso +
+				", peligroInminente=" + peligroInminente +
+				", comentarios='" + comentarios + '\'' +
 				", revisadaPor='" + revisadaPor + '\'' +
 				", createdOn=" + createdOn +
+				", modifiedOn=" + modifiedOn +
 				'}';
 	}
 }
