@@ -24,7 +24,7 @@ public class GrietaModel {
 	private TipoEnum tipo;
 
 	@Index
-	private UbicacionEnum ubicacionEnum;
+	private UbicacionEnum ubicacion;
 
 	@Index
 	private String tweet;
@@ -85,12 +85,12 @@ public class GrietaModel {
 		this.tipo = tipo;
 	}
 
-	public UbicacionEnum getUbicacionEnum() {
-		return ubicacionEnum;
+	public UbicacionEnum getUbicacion() {
+		return ubicacion;
 	}
 
-	public void setUbicacionEnum(UbicacionEnum ubicacionEnum) {
-		this.ubicacionEnum = ubicacionEnum;
+	public void setUbicacion(UbicacionEnum ubicacionEnum) {
+		this.ubicacion = ubicacionEnum;
 	}
 
 	public String getTweet() {
@@ -180,7 +180,7 @@ public class GrietaModel {
 				", files=" + files +
 				", geolocalizacion=" + geolocalizacion +
 				", tipo=" + tipo +
-				", ubicacionEnum=" + ubicacionEnum +
+				", ubicacionEnum=" + ubicacion +
 				", tweet='" + tweet + '\'' +
 				", revisada=" + revisada +
 				", createdOn=" + createdOn +

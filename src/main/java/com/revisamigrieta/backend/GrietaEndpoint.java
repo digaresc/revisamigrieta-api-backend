@@ -2,7 +2,6 @@ package com.revisamigrieta.backend;
 
 import com.google.api.server.spi.response.NotFoundException;
 import com.google.appengine.api.datastore.*;
-import com.googlecode.objectify.Key;
 import com.revisamigrieta.backend.models.*;
 import com.revisamigrieta.backend.models.dao.GrietaDao;
 import com.google.api.server.spi.auth.EspAuthenticator;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
 import static com.revisamigrieta.backend.helpers.Constants.API_VERSION;
 
 /**
@@ -35,7 +33,10 @@ import static com.revisamigrieta.backend.helpers.Constants.API_VERSION;
 				@ApiIssuer(
 						name = "firebase",
 						issuer = "https://securetoken.google.com/revisamigrieta",
-						jwksUri = "https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com")
+						jwksUri = "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com")
+		},
+		issuerAudiences = {
+				@ApiIssuerAudience(name = "firebase", audiences = "revisamigrieta")
 		}
 		// [END_EXCLUDE]
 )
@@ -64,10 +65,10 @@ public class GrietaEndpoint {
 	                    @Named("vibraciones") boolean vibraciones,
 	                    @Named("latitude") float latitude,
 	                    @Named("longitude") float longitude,
-	                    @Named("tipo") TipoEnum tipo,
+	                    @Named("tipo") int tipo,
 	                    @Named("diagonales") boolean diagonales,
 	                    @Named("paralelas") boolean paralelas,
-	                    @Named("ubicacion") UbicacionEnum ubicacion,
+	                    @Named("ubicacion") int ubicacion,
 	                    @Named("filesId") String filesId
 	) throws UnauthorizedException, NotFoundException {
 		if (user == null) {
@@ -88,14 +89,14 @@ public class GrietaEndpoint {
 
 		grietaModel.setUserId(user.getId());
 		grietaModel.setComentario(comentario);
-		grietaModel.setTipo(tipo);
+		grietaModel.setTipo(TipoEnum.values()[tipo]);
 		grietaModel.setTweet(tweet);
-		grietaModel.setUbicacionEnum(ubicacion);
+		grietaModel.setUbicacion(UbicacionEnum.values()[tipo]);
 		grietaModel.setGeolocalizacion(new GeoPt(latitude, longitude));
 
-		if(ubicacion == UbicacionEnum.LOSA){
+		if(grietaModel.getUbicacion() == UbicacionEnum.LOSA){
 			grietaModel.setDiagonalesLosa(diagonales);
-		} else if(ubicacion == UbicacionEnum.PISO) {
+		} else if(grietaModel.getUbicacion() == UbicacionEnum.PISO) {
 			grietaModel.setDiagonalesPiso(diagonales);
 			grietaModel.setParalelasPiso(paralelas);
 		} else{

@@ -34,7 +34,7 @@ import java.util.logging.Logger;
 import static com.revisamigrieta.backend.helpers.Constants.BUCKET_NAME;
 
 public class GrietaImageUploadEndpoint extends HttpServlet {
-	private static final Logger log = Logger.getLogger(GrietaImageUploadEndpoint.class.getName());
+	private static final Logger logger = Logger.getLogger(GrietaImageUploadEndpoint.class.getName());
 
 	// [START gcs]
 	private final GcsService gcsService = GcsServiceFactory.createGcsService(new RetryParams.Builder()
@@ -56,10 +56,17 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 		}
 
 		String grietaId = req.getParameter("grietaId");
+		logger.info("GRIETA" + grietaId);
+
 		if(grietaId == null){
 			throw new ServletException("ID de grieta requerida");
 		}
+		GrietaDao grietaDao = new GrietaDao();
+		GrietaModel grietaModel = grietaDao.get(Long.parseLong(grietaId));
 
+		if(grietaModel == null){
+			throw new ServletException("ID de grieta requerida");
+		}
 
 		String sctype = null, sfieldname, sname = null;
 		ServletFileUpload upload;
@@ -78,11 +85,11 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 				stream = item.openStream();
 
 				if (item.isFormField()) {
-					log.warning("Got a form field: " + item.getFieldName());
+					logger.warning("Got a form field: " + item.getFieldName());
 
 
 				} else {
-					log.warning("Got an uploaded file: " + item.getFieldName() +
+					logger.warning("Got an uploaded file: " + item.getFieldName() +
 							", name = " + item.getName());
 
 					//sfieldname = item.getFieldName();
@@ -139,8 +146,7 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 			throw new ServletException(ex);
 		}
 
-		GrietaDao grietaDao = new GrietaDao();
-		GrietaModel grietaModel = grietaDao.get(Long.parseLong(grietaId));
+
 		ArrayList<String> grietaList = grietaModel.getFiles();
 		grietaList.addAll(fileList);
 		grietaModel.setFiles(fileList);
