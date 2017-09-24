@@ -39,7 +39,10 @@ import static com.revisamigrieta.backend.helpers.Constants.API_VERSION;
 				@ApiIssuer(
 						name = "firebase",
 						issuer = "https://securetoken.google.com/revisamigrieta",
-						jwksUri = "https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com")
+						jwksUri = "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com")
+		},
+		issuerAudiences = {
+				@ApiIssuerAudience(name = "firebase", audiences = "revisamigrieta")
 		}
 		// [END_EXCLUDE]
 )
