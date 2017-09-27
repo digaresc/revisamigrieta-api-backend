@@ -1,0 +1,37 @@
+{
+	"grieta": {
+		"_id": "ObjectId()",
+		"tipo": "interna | externa",
+		"revision": {
+			"diagonalPiso": "true | false",
+			"paralelasPiso": "true | false",
+			"ubicacion": "losa | piso",
+			"losa": {
+				"diagonales": "true | false"
+			},
+			"peligroInminente": "true | false"
+		},
+		"insercion": {
+			"geolocalizacion": "",
+			"ubicacion": "losa|piso",
+			"losa": {
+				"diagonales": "true | false"
+			},
+			"mas20porciento": "true | false",
+			"hundimientos": "true | false",
+			"desplomes": "true | false",
+			"golpeteo": "true | false",
+			"desprendimiento": "true | false",
+			"vibraciones": "true | false",
+			"pisosHuecos": "true | false",
+			"diagonalPiso": "true | false",
+			"paralelasPiso": "true | false"
+		},
+		"tweet": "Almacenar el tweet? en lugar de reportada por",
+		"revisada": "true | false",
+		"voluntarios": ["Arreglo de voluntarios que la revisaron"],
+		"comentarios": ["Arreglo de comentarios"],
+		"created_at": "dateTime",
+		"modified_at": "dateTime"
+	}
+}
