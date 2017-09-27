@@ -55,7 +55,7 @@ gcloud auth application-default login
 mvn appengine:run
 ```
 
-###Staging
+### Staging
 Compila el proyecto y cargalo a Google App Engine:
 
 ```
