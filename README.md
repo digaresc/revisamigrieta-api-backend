@@ -41,7 +41,7 @@ Solo tres endpoints solicitan token de autenticación:
 - Insertar Grietas
 - Insertar Revisión de Grietas
 
-** Draft de objeto JSON de grieta con revisiones**
+**Draft de objeto JSON de grieta con revisiones**
 
 ```json
 {
@@ -94,7 +94,7 @@ Solo tres endpoints solicitan token de autenticación:
     ]
 }
 ```
-** Pasos para insertar imagenes:**
+**Pasos para insertar imagenes:**
 
 1. Obtener token de autenticación via firebase o via solicitud al equipo.
 2. Una solicitud insertada no va a ser valida hasta que se cuente con imagenes sobre ella.
@@ -104,7 +104,7 @@ Solo tres endpoints solicitan token de autenticación:
 
 ### Ejemplo de subida de archivos
 
-```linux
+```
 curl -X POST \
   https://revisamigrieta.appspot.com/upload/ID-GRIETA \
   -H 'authorization: Bearer JWT-TOKEN-FIREBASE' \
