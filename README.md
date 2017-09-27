@@ -161,7 +161,8 @@ Revisa los [issues](https://github.com/digaresc/revisamigrieta-api-backend/issue
 
 ## Team de este proyecto
  - [@digaresc](http://digaresc.info)
- - [@scriptArchitect](github.com/scriptArchitect)
+ - [@xcoatl](https://github.com/xcoatl)
+ - [@scriptArchitect](https://github.com/scriptArchitect)
  - [Codeando Mexico](https://github.com/CodeandoMexico/terremoto-cdmx)
  
 ## Repositorios relacionados:
