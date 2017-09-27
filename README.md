@@ -66,8 +66,7 @@ mvn appengine:deploy
 ```
 
 ## ¿Como consumir el API?
-- [Documentación del API en formato openapi.json]
-(http://digaresc.info/revisamigrieta-api-backend/)
+- [Documentación del API en formato openapi.json](http://digaresc.info/revisamigrieta-api-backend/)
 - [Endpoint de subida de archivos](https://revisamigrieta.appspot.com/_ah/api/upload)
 
 ### Pasos a seguir para insertar grietas e insertar revisiones
@@ -171,3 +170,5 @@ Revisa los [issues](https://github.com/digaresc/revisamigrieta-api-backend/issue
     - Lead: [@mike3run](https://github.com/mike3run)
 - [Revisa Mi Grieta Bot](https://github.com/codersmexico/revisa-mi-grieta-bot)
     - Lead: [@poguez](https://github.com/poguez)
+- [Revisa Mi Grieta Frontend](https://github.com/digaresc/revisamigrieta-frontend)
+    - Lead: [@digaresc](https://github.com/digaresc)
