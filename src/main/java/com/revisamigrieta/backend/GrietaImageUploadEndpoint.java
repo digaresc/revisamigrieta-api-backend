@@ -1,15 +1,14 @@
 package com.revisamigrieta.backend;
 
-import com.google.api.server.spi.response.NotFoundException;
+
 import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.appengine.api.images.Image;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.Transform;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.repackaged.com.google.gson.Gson;
 import com.google.appengine.tools.cloudstorage.*;
+import com.revisamigrieta.backend.helpers.TokenManager;
 import com.revisamigrieta.backend.models.GrietaModel;
 import com.revisamigrieta.backend.models.dao.GrietaDao;
 import org.apache.commons.fileupload.FileItemIterator;
@@ -31,10 +30,10 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import static com.revisamigrieta.backend.helpers.Constants.BUCKET_NAME;
-
 public class GrietaImageUploadEndpoint extends HttpServlet {
 	private static final Logger logger = Logger.getLogger(GrietaImageUploadEndpoint.class.getName());
+
+	private final String bucketName = "revisamigrieta-images";
 
 	// [START gcs]
 	private final GcsService gcsService = GcsServiceFactory.createGcsService(new RetryParams.Builder()
@@ -48,25 +47,67 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 	private static final int BUFFER_SIZE = 2 * 1024 * 1024;
 
 
-	@SuppressWarnings("serial")
+
+	@SuppressWarnings("unchecked")
+	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		UserService userService = UserServiceFactory.getUserService();
-		if (!userService.isUserLoggedIn()) {
-			throw new ServletException("Usuario not logged in");
+		String token = req.getHeader("Authorization");
+		logger.info("token " + token);
+		logger.info(token.substring("Bearer".length()).replaceAll("\\s+", ""));
+		TokenManager tokenManager = new TokenManager();
+		String userId;
+		try {
+			userId = tokenManager.verfiyToken(token.substring("Bearer".length()).replaceAll("\\s+", ""));
+		} catch (UnauthorizedException e) {
+			logger.warning("Not logged In");
+			HashMap<String, String> error = new HashMap<>();
+			error.put("message", "Sin autorizacion.");
+			resp.setContentType("application/json");
+			resp.setStatus(401);
+			resp.getWriter().write(new Gson().toJson(error));
+			return;
+
+		}
+		logger.info("Logged user: " + userId);
+
+		String grietaIdString = req.getPathInfo();
+
+		Long grietaId;
+		try{
+			grietaIdString = grietaIdString.split("/")[1];
+			grietaId = Long.parseLong(grietaIdString);
+		} catch (Exception e){
+			HashMap<String, String> error = new HashMap<>();
+			error.put("message", "Grieta mal formada.");
+			resp.setContentType("application/json");
+			resp.setStatus(404);
+			resp.getWriter().write(new Gson().toJson(error));
+			return;
 		}
 
-		String grietaId = req.getParameter("grietaId");
-		logger.info("GRIETA" + grietaId);
-
-		if(grietaId == null){
-			throw new ServletException("ID de grieta requerida");
+		if ((grietaId <= 0) || (grietaId > 999999999999999999L) || grietaId == null) {
+			logger.warning("Not logged In");
+			HashMap<String, String> error = new HashMap<>();
+			error.put("message", "Grieta mal formada.");
+			resp.setContentType("application/json");
+			resp.setStatus(404);
+			resp.getWriter().write(new Gson().toJson(error));
+			return;
 		}
+
 		GrietaDao grietaDao = new GrietaDao();
-		GrietaModel grietaModel = grietaDao.get(Long.parseLong(grietaId));
+		GrietaModel grietaModel = grietaDao.get(grietaId);
 
-		if(grietaModel == null){
-			throw new ServletException("ID de grieta requerida");
+
+		if(grietaModel == null || !grietaModel.getUserId().equals(userId)){
+			HashMap<String, String> error = new HashMap<>();
+			error.put("message", "Grieta inexistente.");
+			resp.setContentType("application/json");
+			resp.setStatus(404);
+			resp.getWriter().write(new Gson().toJson(error));
+			return;
 		}
+
 
 		String sctype = null, sfieldname, sname = null;
 		ServletFileUpload upload;
@@ -86,8 +127,6 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 
 				if (item.isFormField()) {
 					logger.warning("Got a form field: " + item.getFieldName());
-
-
 				} else {
 					logger.warning("Got an uploaded file: " + item.getFieldName() +
 							", name = " + item.getName());
@@ -107,7 +146,7 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 					byte[] imageBytes = IOUtils.toByteArray(stream);
 					// Write the original image to Cloud Storage
 					gcsService.createOrReplace(
-							new GcsFilename(BUCKET_NAME, filename + extension),
+							new GcsFilename(bucketName, filename + extension),
 							new GcsFileOptions.Builder().acl("public-read")
 									.mimeType("image/jpeg")
 									.addUserMetadata("date",dateString)
@@ -128,7 +167,7 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 
 					// Write the transformed image back to a Cloud Storage object.
 					gcsService.createOrReplace(
-							new GcsFilename(BUCKET_NAME, filename + "-thumb.jpeg"),
+							new GcsFilename(bucketName, filename + "-thumb.JPG"),
 							new GcsFileOptions.Builder()
 									.acl("public-read")
 									.addUserMetadata("date",dateString)
@@ -136,7 +175,7 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 							ByteBuffer.wrap(resizedImage.getImageData()));
 					//[END resize]
 
-					fileList.add(filename + ".jpeg");
+					fileList.add(filename + ".JPG");
 
 					//res.sendRedirect("/");
 
@@ -147,15 +186,13 @@ public class GrietaImageUploadEndpoint extends HttpServlet {
 		}
 
 
-		ArrayList<String> grietaList = grietaModel.getFiles();
-		grietaList.addAll(fileList);
 		grietaModel.setFiles(fileList);
 
 		GrietaModel grietaModelResponse = grietaDao.put(grietaModel);
 		HashMap<String, Long> response = new HashMap<>();
-		response.put("grietaId", grietaModel.id);
+		response.put("grietaId",grietaModel.id);
 
-		String json = new Gson().toJson(response);
+		String json = new Gson().toJson(grietaModelResponse);
 
 		resp.setContentType("application/json");
 		resp.getWriter().print(json);

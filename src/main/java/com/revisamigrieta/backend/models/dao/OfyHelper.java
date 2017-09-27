@@ -1,12 +1,11 @@
 package com.revisamigrieta.backend.models.dao;
 
 
-import com.revisamigrieta.backend.models.GrietaModel;
-import com.revisamigrieta.backend.models.RevisionModel;
 import com.googlecode.objectify.ObjectifyService;
+import com.revisamigrieta.backend.models.GrietaModel;
 
-import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 /**
  * OfyHelper, a ServletContextListener, is setup in web.xml to run before a JSP is run.  This is
@@ -17,7 +16,6 @@ public class OfyHelper implements ServletContextListener {
 		// This will be invoked as part of a warmup request, or the first user request if no warmup
 		// request.
 		ObjectifyService.register(GrietaModel.class);
-		ObjectifyService.register(RevisionModel.class);
 	}
 
 	public void contextDestroyed(ServletContextEvent event) {

@@ -7,8 +7,9 @@ import com.googlecode.objectify.annotation.Index;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-@Entity
+@Entity(name="Grietas")
 public class GrietaModel {
 
 	@Id
@@ -53,9 +54,11 @@ public class GrietaModel {
 	@Index
 	private String userId;
 
-
 	@Index
 	private EstadoDeObra estadoDeObra;
+
+	@Index
+	private List<RevisionModel> revisiones = new ArrayList<>();
 
 	public GrietaModel() {
 		createdOn = new Date();
@@ -173,26 +176,24 @@ public class GrietaModel {
 		this.userId = userId;
 	}
 
-	@Override
-	public String toString() {
-		return "GrietaModel{" +
-				"id=" + id +
-				", files=" + files +
-				", geolocalizacion=" + geolocalizacion +
-				", tipo=" + tipo +
-				", ubicacionEnum=" + ubicacion +
-				", tweet='" + tweet + '\'' +
-				", revisada=" + revisada +
-				", createdOn=" + createdOn +
-				", modifiedOn=" + modifiedOn +
-				", comentario='" + comentario + '\'' +
-				", diagonalesLosa=" + diagonalesLosa +
-				", diagonalesPiso=" + diagonalesPiso +
-				", paralelasPiso=" + paralelasPiso +
-				", userId='" + userId + '\'' +
-				", estadoDeObra=" + estadoDeObra +
-				'}';
+	public List<RevisionModel> getRevisiones() {
+		return revisiones;
 	}
+
+	public void setRevisiones(List<RevisionModel> revisiones) {
+		this.revisiones = revisiones;
+	}
+
+	public void addRevision(RevisionModel revisionModel) {
+		if(this.revisiones != null){
+			this.revisiones.add(revisionModel);
+		}
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 }
 
 

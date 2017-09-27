@@ -27,7 +27,21 @@
        "$ref": "#/definitions/GrietaModelCollection"
       }
      }
-    }
+    },
+    "security": [
+     {
+      "firebase": [ ]
+     }
+    ],
+    "x-security": [
+     {
+      "firebase": {
+       "audiences": [
+        "revisamigrieta"
+       ]
+      }
+     }
+    ]
    },
    "post": {
     "operationId": "GrietaPublish",
@@ -104,11 +118,8 @@
       "name": "tipo",
       "in": "query",
       "required": true,
-      "type": "string",
-      "enum": [
-       "INTERNA",
-       "EXTERNA"
-      ]
+      "type": "integer",
+      "format": "int32"
      },
      {
       "name": "diagonales",
@@ -126,11 +137,8 @@
       "name": "ubicacion",
       "in": "query",
       "required": true,
-      "type": "string",
-      "enum": [
-       "LOSA",
-       "PISO"
-      ]
+      "type": "integer",
+      "format": "int32"
      },
      {
       "name": "filesId",
@@ -160,7 +168,35 @@
     ]
    }
   },
-  "/v1/grietas/pending": {
+  "/v1/grietas/criticas": {
+   "get": {
+    "operationId": "GrietaRetrieveAllGrietasCriticas",
+    "parameters": [ ],
+    "responses": {
+     "200": {
+      "description": "A successful response",
+      "schema": {
+       "$ref": "#/definitions/GrietaModelCollection"
+      }
+     }
+    },
+    "security": [
+     {
+      "firebase": [ ]
+     }
+    ],
+    "x-security": [
+     {
+      "firebase": {
+       "audiences": [
+        "revisamigrieta"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "/v1/grietas/pendientes": {
    "get": {
     "operationId": "GrietaRetrieveAllPendingGrietas",
     "parameters": [ ],
@@ -171,55 +207,49 @@
        "$ref": "#/definitions/GrietaModelCollection"
       }
      }
-    }
-   }
-  },
-  "/v1/grietas/{grietaId}/revisiones": {
-   "get": {
-    "operationId": "GrietaRetrieveAllGrietasReview",
-    "parameters": [
+    },
+    "security": [
      {
-      "name": "grietaId",
-      "in": "path",
-      "required": true,
-      "type": "string"
+      "firebase": [ ]
      }
     ],
+    "x-security": [
+     {
+      "firebase": {
+       "audiences": [
+        "revisamigrieta"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "/v1/grietas/siguiente": {
+   "get": {
+    "operationId": "GrietaRetrieveNextGrietas",
+    "parameters": [ ],
     "responses": {
      "200": {
       "description": "A successful response",
       "schema": {
-       "$ref": "#/definitions/RevisionModelCollection"
+       "$ref": "#/definitions/GrietaModel"
       }
      }
-    }
-   }
-  },
-  "/v1/grietas/{grietaId}/revisiones/{revisionId}": {
-   "get": {
-    "operationId": "GrietaRetrieveGrietasReview",
-    "parameters": [
+    },
+    "security": [
      {
-      "name": "grietaId",
-      "in": "path",
-      "required": true,
-      "type": "string"
-     },
-     {
-      "name": "revisionId",
-      "in": "path",
-      "required": true,
-      "type": "string"
+      "firebase": [ ]
      }
     ],
-    "responses": {
-     "200": {
-      "description": "A successful response",
-      "schema": {
-       "$ref": "#/definitions/RevisionModel"
+    "x-security": [
+     {
+      "firebase": {
+       "audiences": [
+        "revisamigrieta"
+       ]
       }
      }
-    }
+    ]
    }
   },
   "/v1/grietas/{id}": {
@@ -240,7 +270,21 @@
        "$ref": "#/definitions/GrietaModel"
       }
      }
-    }
+    },
+    "security": [
+     {
+      "firebase": [ ]
+     }
+    ],
+    "x-security": [
+     {
+      "firebase": {
+       "audiences": [
+        "revisamigrieta"
+       ]
+      }
+     }
+    ]
    }
   },
   "/v1/grietas/{id}/revisiones": {
@@ -312,7 +356,7 @@
    "authorizationUrl": "",
    "flow": "implicit",
    "x-google-issuer": "https://securetoken.google.com/revisamigrieta",
-   "x-google-jwks_uri": "https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+   "x-google-jwks_uri": "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
   }
  },
  "definitions": {
@@ -363,27 +407,23 @@
     "revisada": {
      "type": "boolean"
     },
+    "revisiones": {
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/RevisionModel"
+     }
+    },
     "tipo": {
      "$ref": "#/definitions/TipoEnum"
     },
     "tweet": {
      "type": "string"
     },
-    "ubicacionEnum": {
+    "ubicacion": {
      "$ref": "#/definitions/UbicacionEnum"
     },
     "userId": {
      "type": "string"
-    }
-   }
-  },
-  "RevisionModelCollection": {
-   "properties": {
-    "items": {
-     "type": "array",
-     "items": {
-      "$ref": "#/definitions/RevisionModel"
-     }
     }
    }
   },
@@ -426,13 +466,6 @@
     },
     "diagonalesPiso": {
      "type": "boolean"
-    },
-    "grietaModelRef": {
-     "$ref": "#/definitions/GrietaModel"
-    },
-    "id": {
-     "type": "integer",
-     "format": "int64"
     },
     "modifiedOn": {
      "type": "string",

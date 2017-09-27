@@ -1,6 +1,17 @@
-## Revisa Mi Grieta API Backend
+# API de @RevisaMiGrieta (Alpha)
 
-### Stack
+##Objetivo
+
+- Brindar un punto de acceso para el registro de solicitudes de revisiones “rápidas” sobre la seguridad de un inmueble (API, Web App)
+- Permitir la captura de revisiones sobre las solicitudes y documentar la evidencia
+- Emitir una recomendación rápida y enlazarte a otras herramientas / Organismos
+- Generar un repositorio de imágenes, cuestionarios y revisiones para usarlo para entrenar un sistema de Machine Learning para en base a resultados evaluar su uso posterior como un sistema de reacción rápida
+
+
+## Dependencias:
+
+###Stack
+
 - Google App Engine
 - Google Datastore
 - Google Storage 
@@ -8,44 +19,120 @@
 - Java 7
 - OpenApi
 
-### Instrucciones
+##Instrucciones
 
-Tomar de referencia [openapi.json](https://github.com/digaresc/revisamigrieta-api-backend/blob/master/openapi.json) para frontend o apps que consuman el api.
+Compila el proyecto y cargalo a Google App Engine:
 
-Documentación del API: 
-[http://digaresc.info/revisamigrieta-api-backend/](http://digaresc.info/revisamigrieta-api-backend/)
-
-Endpoint de subida de archivos:
-HTTP URL: [https://revisamigrieta.appspot.com/_ah/api/upload](https://revisamigrieta.appspot.com/_ah/api/upload)
-HTTP Method: POST form-data multipart 
-
-### Pasos para hacer submit de grietas:
-
-Subir la imagen al endpoint de archivos. Al subir la imagen se recibe un id de grieta (grietaId), el cual es requerido para continuar con el formulario.
-
-Agregar grietaId al endpoint de subida de información de grieta. Sin un id previamente obtenido de subir imagenes/video, no sera posible subir información.
-
-Ejemplo de imágenes:
-
-- Todas las imágenes se guardan en formato fuente: [Imagen tamaño completo](https://storage.googleapis.com/revisamigrieta-images/3f6cc669-c105-4e60-9106-a188820df25e-1506069507417.jpeg).
-- Todas las imagenes cuentan con un thumb: [Imagen 300*300](https://storage.googleapis.com/revisamigrieta-images/3f6cc669-c105-4e60-9106-a188820df25e-1506069507417-thumb.jpeg).
-
-Ejemplo en CURL:
-
-``` 
-  curl -X POST \
-  https://revisamigrieta.appspot.com/_ah/api/upload \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: multipart/form-data;' \
-  -F file1=@Foto.jpeg \
-  -F file2=@IMG_2977.jpg \
-  -F file3=@IMG_20170905_183133149.jpg 
 ```
-  
-Response:
+mvn clean package
+mvn endpoints-framework:openApiDocs
+gcloud service-management deploy target/openapi-docs/openapi.json
+mvn appengine:deploy
+```
+## ¿Como consumir el API?
+- [Documentación del API en formato openapi.json]
+(http://digaresc.info/revisamigrieta-api-backend/)
+- [Endpoint de subida de archivos](https://revisamigrieta.appspot.com/_ah/api/upload)
 
-``` 
+### Pasos a seguir para insertar grietas e insertar revisiones
+Solo tres endpoints solicitan token de autenticación:
+
+- Insertar Grietas
+- Insertar Revisión de Grietas
+
+**Draft de objeto JSON de grieta con revisiones**
+```json
 {
-    "grietaId": 5634472569470976
-} 
+    "id": "5671831268753408",
+    "files": [
+        "70b462c6-04f9-49a0-a7b8-2c2d5a6703d0-1506493156941.JPG",
+        "b6d304f4-6764-42d2-b3fd-c271a1d2f8d3-1506493158467.JPG"
+    ],
+    "geolocalizacion": {
+        "latitude": 32.1,
+        "longitude": 2.3
+    },
+    "tipo": "INTERNA",
+    "ubicacion": "LOSA",
+    "revisada": true,
+    "createdOn": "2017-09-27T06:05:21.598Z",
+    "comentario": "comentario",
+    "diagonalesLosa": false,
+    "diagonalesPiso": false,
+    "paralelasPiso": false,
+    "userId": "idusuario",
+    "estadoDeObra": {
+        "hundimientos": false,
+        "desplomes": false,
+        "golpeteo": false,
+        "desprendimiento": false,
+        "vibraciones": false,
+        "pisosHuecos": false,
+        "mas20porciento": false
+    },
+    "revisiones": [
+        {
+            "diagonalesLosa": false,
+            "paralelasPiso": true,
+            "diagonalesPiso": false,
+            "peligroInminente": true,
+            "comentarios": "Comentario 1",
+            "revisadaPor": "idusuario",
+            "createdOn": "2017-09-27T06:07:05.985Z"
+        },
+        {
+            "diagonalesLosa": false,
+            "paralelasPiso": true,
+            "diagonalesPiso": false,
+            "peligroInminente": true,
+            "comentarios": "Comentario 2",
+            "revisadaPor": "idusuario",
+            "createdOn": "2017-09-27T06:07:35.210Z"
+        }
+    ]
+}
 ```
+**Pasos para insertar imagenes:**
+
+1. Obtener token de autenticación via firebase o via solicitud al equipo.
+2. Una solicitud insertada no va a ser valida hasta que se cuente con imagenes sobre ella.
+3. Al registrar una grieta se obtiene el ID del elemento como respuesta del servidor.
+4. Ese ID se requiere para la subida de archivos.
+
+
+###Ejemplo de subida de archivos
+```linux
+curl -X POST \
+  https://revisamigrieta.appspot.com/upload/ID-GRIETA \
+  -H 'authorization: Bearer JWT-TOKEN-FIREBASE' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: multipart/form-data; \
+  -F file1=@imagen1.png \
+  -F fdfgd=@imagen2.jpg 
+```
+
+##Documentación sobre el problema
+- [Draft de Preguntas actualmente usandose para el modelado de la DB](https://github.com/digaresc/revisamigrieta-api-backend/blob/master/PREGUNTAS.MD)
+
+
+## Links de ayuda
+- [Google Cloud Endpoints Quickstart](https://cloud.google.com/endpoints/docs/frameworks/java/get-started-frameworks-java)
+- [Google App Engine Quickstart](https://cloud.google.com/appengine/docs/standard/java/quickstart)
+
+## Contribuye
+Revisa los [issues](https://github.com/digaresc/revisamigrieta-api-backend/issues) y manda Pull Request.
+
+## Team de este proyecto
+ - [@digaresc](http://digaresc.info)
+ - [@scriptArchitect](github.com/scriptArchitect)
+ - [Codeando Mexico](https://github.com/CodeandoMexico/terremoto-cdmx)
+ 
+## Repositorios relacionados:
+
+- [Guía rápida y accesible para usuarios del hashtag #RevisaMiGrieta](https://github.com/codersmexico/grieta-landing)
+    - Lead: [@mike3run](https://github.com/mike3run)
+- [Revisa Mi Grieta Bot](https://github.com/codersmexico/revisa-mi-grieta-bot)
+    - Lead: [@poguez](https://github.com/poguez)
+- [Revisa Mi Grieta Front-end app](https://github.com/digaresc/revisamigrieta-frontend)
+    - Lead: [@digaresc](https://github.com/digaresc)
+

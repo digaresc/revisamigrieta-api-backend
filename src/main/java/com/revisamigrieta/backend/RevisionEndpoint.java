@@ -1,24 +1,15 @@
 package com.revisamigrieta.backend;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.FetchOptions;
-import com.google.appengine.api.datastore.Query;
-import com.revisamigrieta.backend.models.GrietaModel;
-import com.revisamigrieta.backend.models.RevisionModel;
-import com.revisamigrieta.backend.models.dao.GrietaDao;
-import com.revisamigrieta.backend.models.dao.RevisionDao;
 import com.google.api.server.spi.auth.EspAuthenticator;
 import com.google.api.server.spi.auth.common.User;
 import com.google.api.server.spi.config.*;
 import com.google.api.server.spi.response.UnauthorizedException;
-import com.googlecode.objectify.Key;
+import com.revisamigrieta.backend.models.GrietaModel;
+import com.revisamigrieta.backend.models.RevisionModel;
+import com.revisamigrieta.backend.models.dao.GrietaDao;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
 import static com.revisamigrieta.backend.helpers.Constants.API_VERSION;
 
 /**
@@ -65,9 +56,15 @@ public class RevisionEndpoint {
 		if (user == null) {
 			throw new UnauthorizedException("Invalid credentials");
 		}
-		RevisionModel revisionModel = new RevisionModel();
 
-		revisionModel.setGrietaModelRef(id);
+		GrietaDao grietaDao = new GrietaDao();
+
+
+
+
+		GrietaModel grietaModel = grietaDao.get(Long.parseLong(id));
+
+		RevisionModel revisionModel = new RevisionModel();
 		revisionModel.setRevisadaPor(user.getId());
 
 		revisionModel.setComentarios(comentarios);
@@ -76,40 +73,23 @@ public class RevisionEndpoint {
 		revisionModel.setParalelasPiso(paralelasPiso);
 		revisionModel.setPeligroInminente(peligroInminente);
 
-		RevisionDao revisionDao = new RevisionDao();
 
 
+		grietaModel.addRevision(revisionModel);
 
-		if(!revisionModel.getGrietaModelRef().isRevisada()){
-			revisionModel.getGrietaModelRef().setRevisada(true);
+
+		logger.info(grietaModel.toString());
+
+		if(!grietaModel.isRevisada()){
+			grietaModel.setRevisada(true);
 		}
 
-		revisionDao.put(revisionModel);
+		grietaDao.put(grietaModel);
+
+
+
 	}
-	// [END publish_method]
 
-	// [START retrieveAllGrietas_method]
-	@ApiMethod(name = "retrieveAllGrietasReview", path = API_VERSION + "/grietas/{grietaId}/revisiones", httpMethod = ApiMethod.HttpMethod.GET)
-	public List<RevisionModel> retrieveAllGrietasReview(@Named("grietaId") String grietaId) {
-
-		Key grietaModelKey = Key.create(GrietaModel.class, grietaId);
-
-		List<RevisionModel> revisionModels = ofy().load().type(RevisionModel.class).filter("grietaModelRef", grietaModelKey).list();
-		logger.info(revisionModels.toString());
-		return revisionModels;
-	}
-	// [END retrieveAllGrietas_method]
-
-	// [START retrieveGrieta_method]
-	@ApiMethod(name = "retrieveGrietasReview", path = API_VERSION + "/grietas/{grietaId}/revisiones/{revisionId}", httpMethod = ApiMethod.HttpMethod.GET)
-	public RevisionModel retrieveGrietasReview(@Named("grietaId") String grietaId, @Named("revisionId") String id) {
-		Long revisionId = Long.parseLong(id);
-		RevisionDao revisionDao = new RevisionDao();
-		RevisionModel revisionModel = revisionDao.get(revisionId);
-		logger.info(revisionModel.toString());
-		return revisionModel;
-	}
-	// [END retrieveGrieta_method]
 
 
 

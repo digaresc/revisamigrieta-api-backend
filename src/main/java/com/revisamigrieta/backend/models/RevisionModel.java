@@ -1,59 +1,19 @@
 package com.revisamigrieta.backend.models;
 
-import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Ref;
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
-import com.googlecode.objectify.annotation.Index;
-import com.googlecode.objectify.annotation.Load;
-
-
 import java.util.Date;
 
-@Entity
 public class RevisionModel {
-
-	@Id
-	public Long id;
-
-	@Index
-	@Load
-	Ref<GrietaModel> grietaModelRef;
-
-	@Index
 	private boolean diagonalesLosa;
-
-	@Index
 	private boolean paralelasPiso;
-
-	@Index
 	private boolean diagonalesPiso;
-
-	@Index
 	private boolean peligroInminente;
-
-	@Index
 	private String comentarios;
-
-	@Index
 	private String revisadaPor;
-
-	@Index
 	private Date createdOn;
-
-	@Index
 	private Date modifiedOn;
 
 	public RevisionModel() {
 		createdOn = new Date();
-	}
-
-	public GrietaModel getGrietaModelRef() {
-		return grietaModelRef.get();
-	}
-
-	public void setGrietaModelRef(String grietaModelId) {
-		this.grietaModelRef = Ref.create(Key.create(GrietaModel.class, grietaModelId));
 	}
 
 	public boolean isDiagonalesLosa() {
@@ -120,20 +80,6 @@ public class RevisionModel {
 		this.modifiedOn = modifiedOn;
 	}
 
-	@Override
-	public String toString() {
-		return "RevisionModel{" +
-				"id=" + id +
-				", grietaModelRef=" + grietaModelRef +
-				", diagonalesLosa=" + diagonalesLosa +
-				", paralelasPiso=" + paralelasPiso +
-				", diagonalesPiso=" + diagonalesPiso +
-				", peligroInminente=" + peligroInminente +
-				", comentarios='" + comentarios + '\'' +
-				", revisadaPor='" + revisadaPor + '\'' +
-				", createdOn=" + createdOn +
-				", modifiedOn=" + modifiedOn +
-				'}';
-	}
+
 }
 
