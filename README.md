@@ -1,6 +1,6 @@
 # API de @RevisaMiGrieta (Alpha)
 
-##Objetivo
+## Objetivo
 
 - Brindar un punto de acceso para el registro de solicitudes de revisiones “rápidas” sobre la seguridad de un inmueble (API, Web App)
 - Permitir la captura de revisiones sobre las solicitudes y documentar la evidencia
@@ -10,7 +10,7 @@
 
 ## Dependencias:
 
-###Stack
+### Stack
 
 - Google App Engine
 - Google Datastore
@@ -19,7 +19,7 @@
 - Java 7
 - OpenApi
 
-##Instrucciones
+## Instrucciones
 
 Compila el proyecto y cargalo a Google App Engine:
 
@@ -29,6 +29,7 @@ mvn endpoints-framework:openApiDocs
 gcloud service-management deploy target/openapi-docs/openapi.json
 mvn appengine:deploy
 ```
+
 ## ¿Como consumir el API?
 - [Documentación del API en formato openapi.json]
 (http://digaresc.info/revisamigrieta-api-backend/)
@@ -40,7 +41,8 @@ Solo tres endpoints solicitan token de autenticación:
 - Insertar Grietas
 - Insertar Revisión de Grietas
 
-**Draft de objeto JSON de grieta con revisiones**
+** Draft de objeto JSON de grieta con revisiones**
+
 ```json
 {
     "id": "5671831268753408",
@@ -92,7 +94,7 @@ Solo tres endpoints solicitan token de autenticación:
     ]
 }
 ```
-**Pasos para insertar imagenes:**
+** Pasos para insertar imagenes:**
 
 1. Obtener token de autenticación via firebase o via solicitud al equipo.
 2. Una solicitud insertada no va a ser valida hasta que se cuente con imagenes sobre ella.
@@ -100,7 +102,8 @@ Solo tres endpoints solicitan token de autenticación:
 4. Ese ID se requiere para la subida de archivos.
 
 
-###Ejemplo de subida de archivos
+### Ejemplo de subida de archivos
+
 ```linux
 curl -X POST \
   https://revisamigrieta.appspot.com/upload/ID-GRIETA \
@@ -111,7 +114,7 @@ curl -X POST \
   -F fdfgd=@imagen2.jpg 
 ```
 
-##Documentación sobre el problema
+## Documentación sobre el problema
 - [Draft de Preguntas actualmente usandose para el modelado de la DB](https://github.com/digaresc/revisamigrieta-api-backend/blob/master/PREGUNTAS.MD)
 
 
