@@ -20,7 +20,42 @@
 - OpenApi
 
 ## Instrucciones
+### Desarrollo local
+Compila el proyecto y cargalo de manera local:
 
+```
+mvn clean package
+mvn endpoints-framework:openApiDocs
+gcloud service-management deploy target/openapi-docs/openapi.json
+```
+Crear variable de sistema indicando el servidor de endpoints:
+
+En Linux or MacOS:
+
+```
+export ENDPOINTS_SERVICE_NAME=[YOUR_PROJECT_ID].appspot.com
+```
+
+En Windows:
+
+```
+$Env:ENDPOINTS_SERVICE_NAME="[YOUR_PROJECT_ID].appspot.com"
+```
+
+Autenticar
+
+```
+gcloud auth application-default login
+```
+
+
+**Correr de manera local:**
+
+```
+mvn appengine:run
+```
+
+###Staging
 Compila el proyecto y cargalo a Google App Engine:
 
 ```
@@ -136,6 +171,3 @@ Revisa los [issues](https://github.com/digaresc/revisamigrieta-api-backend/issue
     - Lead: [@mike3run](https://github.com/mike3run)
 - [Revisa Mi Grieta Bot](https://github.com/codersmexico/revisa-mi-grieta-bot)
     - Lead: [@poguez](https://github.com/poguez)
-- [Revisa Mi Grieta Front-end app](https://github.com/digaresc/revisamigrieta-frontend)
-    - Lead: [@digaresc](https://github.com/digaresc)
-
